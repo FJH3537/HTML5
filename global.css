@@ -1,0 +1,143 @@
+/*Navbar*/
+.navbar-custom {
+    background-color: #2a815b;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: 10px solid #004a29;
+}
+
+.navbar-custom .nav-link {
+    /*Descendant Selectors*/
+    /*The Menu Text*/
+    color: #5bc0de !important;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 30px 15px !important;
+    transition: color 0.3s ease;
+    
+}
+
+.navbar-custom .nav-link:hover,
+/*I dont fucking know, turn white i guess*/
+.navbar-custom .nav-link:focus {
+    color: #ffffff !important;
+    /* FIXED: Standard 6-digit white */
+}
+
+.navbar-custom .navbar-collapse {
+    /*A collapsing Menu bar*/
+    background-color: #000000;
+}
+
+.navbar-custom .donate-link {
+    background-color: #ffc107 !important;
+    color: #000000 !important;
+}
+
+.logo-box {
+    /*The logo box style*/
+    background-color: #f8f9fa;
+    padding: 15px 25px;
+    color: #000000 !important;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+/*Footer*/
+/* Top Yellow CTA Section */
+.footer-cta {
+    background-color: #fbbc04; /* Bright Yellow */
+    padding: 40px 0;
+    color: #002b5e; 
+}
+.footer-cta h2 {
+    font-weight: 900;
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+.footer-cta p {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+}
+.btn-donate {
+    background-color: #d93025; /* Red button */
+    color: #ffffff;
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 4px;
+    border: none;
+    transition: 0.2s;
+}
+.btn-donate:hover {
+    background-color: #b31b12;
+    color: #ffffff;
+}
+
+/* Main Dark Blue Footer */
+.footer-main {
+    background-color: #002b5e; /* Deep Navy Blue */
+    color: #ffffff;
+    padding: 20px 0 10px 0;
+}
+.footer-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #d1d5db; /* Light grey text */
+}
+.footer-info strong {
+    color: #ffffff;
+}
+
+/* Links Columns */
+.footer-links h6 {
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    color: #9aa0a6;
+    text-transform: uppercase;
+}
+.footer-links ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+    margin: 0;
+}
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Bottom Sub-footer */
+.footer-bottom {
+    border-top: 1px solid #3c5a7d; /* Faint line above socials */
+}
+.social-icons a {
+    color: #ffffff;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.social-icons a:hover {
+    color: #fbbc04; /* Turns yellow on hover */
+}
+.legal-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-left: 20px;
+    transition: 0.2s;
+}
+.legal-links a:hover {
+    color: #ffffff;
+}
