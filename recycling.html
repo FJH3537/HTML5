@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>E-Waste Recycling | Green Tech Club</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--font awsome different version-------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+
+    <link rel="icon" type="image/png" href="images/leaf.png">
+    <style>
+        /*polkadot background*/
+        body {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(rgba(45, 106, 79, 0.3) 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+        }
+
+        /*header banner bg image*/
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('images/recycle.jfif');
+            background-size: contain;
+            background-position: center;
+            padding: 50px 0;
+        }
+
+        /*animations*/
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-section .container {
+            animation: fadeSlideUp 1s ease-out;
+        }
+
+        .col-md-5 .card {
+            animation: slideInLeft 1s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .col-md-7 .card {
+            animation: slideInRight 1s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <!--header-->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold text-white">E-Waste Recycling</h1>
+            <p class="lead text-white">Not sure what to do with old or broken tech laying around?<br>
+                Drop it off with us for it to be refurbished, repurposed, or recycled safely.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+
+            <!--Recycling Information-->
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h3 class="card-title text-success"><i class="fa-solid fa-recycle"></i> Technologies We Accept</h3>
+                        <hr>
+                        
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item"><i class="fa-solid fa-mobile-screen text-primary"></i> Smartphones & Tablets</li>
+                            <li class="list-group-item"><i class="fa-solid fa-laptop text-primary"></i> Laptops, PCs & Computer Parts</li>
+                            <li class="list-group-item"><i class="fa-solid fa-plug text-primary"></i> Cables, Chargers & Adapters</li>
+                            <li class="list-group-item"><i class="fa-solid fa-battery-half text-primary"></i> Lithium & AA/AAA Batteries</li>
+                        </ul>
+
+                        <div class="alert alert-warning" role="alert">
+                            <strong><i class="fa-solid fa-triangle-exclamation"></i> Note:</strong>
+                            We do NOT accept large household appliances, CRT TVs, or leaking batteries.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Drop-off Form-->
+            <div class="col-md-7 mb-4">
+                <div class="card shadow-sm border-success">
+                    <div class="card-header text-white" style="background-color: #2d6a4f;">
+                        <h4 class="mb-0">Schedule a Tech Drop-Off</h4>
+                    </div>
+                    <div class="card-body bg-light">
+                        <form id="recyclingForm">
+                            <!--Name & Email-->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName"
+                                        placeholder="Jane Doe" required>
+                                </div>
+                                <div class="col">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="name@example.com" required>
+                                </div>
+                            </div>
+
+                            <!--Dropdown Menu-->
+                            <div class="mb-3">
+                                <label for="itemType" class="form-label">What are you recycling?</label>
+                                <select class="form-select" id="itemType" name="itemType" required>
+                                    <option value="" selected disabled>Choose an item category...</option>
+                                    <option value="mobile">Mobile Devices</option>
+                                    <option value="computer">Laptop / PC / Computer parts</option>
+                                    <option value="cables">Cables / Chargers / Adapters</option>
+                                    <option value="batteries">Batteries</option>
+                                    <option value="other">Other Tech</option>
+                                </select>
+                            </div>
+
+                            <!--Hidden "Other Tech" Text Input-->
+                            <div class="mb-3 d-none" id="otherTechDiv">
+                                <label for="otherTechInput" class="form-label text-muted">Please specify:</label>
+                                <input type="text" class="form-control" id="otherTechInput" name="otherTechInput"
+                                    placeholder="e.g., Smartwatch, Router, Camera">
+                            </div>
+
+                            <!--Date Input-->
+                            <div class="mb-3">
+                                <label for="dropOffDate" class="form-label">Preferred Drop-Off Date</label>
+                                <input type="date" class="form-control" id="dropOffDate" name="dropOffDate" required>
+                            </div>
+
+                            <!--Radio Buttons-->
+                            <div class="mb-3">
+                                <label class="form-label">Item Condition</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="condition" id="condWorking"
+                                        value="working">
+                                    <label class="form-check-label" for="condWorking">Working</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="condition" id="condBroken"
+                                        value="broken">
+                                    <label class="form-check-label" for="condBroken">Broken / For Parts</label>
+                                </div>
+                            </div>
+
+                            <!--Checkbox-->
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="wipeData" name="wipeData" required>
+                                <label class="form-check-label" for="wipeData">
+                                    I confirm that I have wiped my personal data from this device (or the device does
+                                    not store data).
+                                </label>
+                            </div>
+
+                            <!--Submit & Clear Buttons-->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="reset" class="btn btn-outline-secondary" id="clearBtn">Clear</button>
+                                <button type="submit" class="btn btn-success btn-lg">Submit Drop-Off Request</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="global.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //-------------- Other Tech Specification ---------------//
+            const itemDropdown = $('#itemType');
+            const otherTechDiv = $('#otherTechDiv');
+            const otherTechInput = $('#otherTechInput');
+
+            itemDropdown.on('change', function () {
+                if (itemDropdown.val() === 'other') {
+                    otherTechDiv.removeClass('d-none');
+                    otherTechInput.prop('required', true);
+                } else {
+                    otherTechDiv.addClass('d-none');
+                    otherTechInput.prop('required', false);
+                    otherTechInput.val('');
+                }
+            });
+
+            //---------------- Storage & Form Handling---------------//
+            const nameInput = $('#fullName');
+            const emailInput = $('#email');
+            const formContainer = $('.card-body.bg-light');
+
+            //Save user name & email and pre-fill
+            if (localStorage.getItem('gt_savedName')) {
+                nameInput.val(localStorage.getItem('gt_savedName'));
+            }
+
+            if (localStorage.getItem('gt_savedEmail')) {
+                emailInput.val(localStorage.getItem('gt_savedEmail'));
+            }
+
+            nameInput.on('input', function () {
+                localStorage.setItem('gt_savedName', nameInput.val());
+            });
+
+            emailInput.on('input', function () {
+                localStorage.setItem('gt_savedEmail', emailInput.val());
+            });
+
+            //Check if form has been submitted this session
+            if (sessionStorage.getItem('gt_formSubmitted') === 'true') {
+                showSuccessMessage();
+            }
+
+            //Allow user to clear form
+            $('#clearBtn').on('click', function () {
+                localStorage.removeItem('gt_savedName');
+                localStorage.removeItem('gt_savedEmail');
+            });
+
+            //AJAX Form Submission
+            $('#recyclingForm').on('submit', function (event) {
+                event.preventDefault();
+
+                //Submit button become loading and prevent spam-clicking
+                const submitBtn = $(this).find('button[type="submit"]');
+                submitBtn.html('<i class="fa-solid fa-spinner fa-spin"></i> Submitting...');
+                submitBtn.prop('disabled', true);
+
+                //Gather form data
+                const formData = {
+                    name: nameInput.val(),
+                    email: emailInput.val(),
+                    item: itemDropdown.val(),
+                    date: $('#dropOffDate').val()
+                };
+
+                //Simulate sending form data
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        console.log("API Response:", response);
+
+                        sessionStorage.setItem('gt_formSubmitted', 'true');
+
+                        localStorage.removeItem('gt_savedName');
+                        localStorage.removeItem('gt_savedEmail');
+
+                        showSuccessMessage();
+                    },
+                    error: function (error) {
+                        alert("There was an error communicating with the API. Please try again.");
+                        submitBtn.html('Submit Drop-Off Request');
+                        submitBtn.prop('disabled', false);
+                    }
+                });
+            });
+
+            //----------------------After Submit--------------------//
+            function showSuccessMessage() {
+                //Get current page URL to share
+                const currentUrl = encodeURIComponent(window.location.href);
+                const shareText = encodeURIComponent("I just scheduled my e-waste for recycling with the Green Tech Club! Join me in saving the planet!");
+
+                //Success message
+                formContainer.html(`
+                    <div class="alert alert-success text-center mb-0 p-4" role="alert">
+                        <i class="fa-solid fa-circle-check fa-4x mb-3"></i>
+                        <h4 class="alert-heading fw-bold">Thank You!</h4>
+                        <p>Your recycling drop-off request has been received. We will email you shortly for further instructions.</p>
+                        
+                        <button id="resetFormBtn" class="btn btn-outline-success rounded-pill px-4 mt-2 mb-3">
+                            <i class="fa-solid fa-rotate-right"></i> Schedule Another Item
+                        </button>
+                        <hr>
+
+                        <p class="mb-3 fw-bold">Help us spread the word!</p>
+                        
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank" class="btn btn-primary m-1" style="background-color: #1877F2; border: none;">
+                            <i class="fa-brands fa-facebook"></i> Share on Facebook
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareText}" target="_blank" class="btn btn-dark m-1">
+                            <i class="fa-brands fa-x-twitter"></i> Post to X
+                        </a>
+                    </div>
+                `);
+
+                //Reset form and allow user to submit new form
+                $('#resetFormBtn').on('click', function() {
+                    sessionStorage.removeItem('gt_formSubmitted');
+                    location.reload();
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>

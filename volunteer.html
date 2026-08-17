@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Volunteer | Green Tech Club</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!--font awsome different version-------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
+
+    <link rel="icon" type="image/png" href="images/leaf.png">
+    <style>
+        /*polkadot background*/
+        body {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(rgba(45, 106, 79, 0.3) 1.5px, transparent 1.5px);
+            background-size: 20px 20px;
+        }
+
+        /*header banner bg image*/
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url('images/green.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 0;
+        }
+
+        /*animations*/
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-section .container {
+            animation: fadeSlideUp 1s ease-out;
+        }
+
+        .col-md-5 .card {
+            animation: slideInLeft 1s ease-out 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .col-md-7 .card {
+            animation: slideInRight 1s ease-out 0.4s;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <!--header-->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold text-white">Join Our Mission</h1>
+            <p class="lead text-white">Become a volunteer and help us sort, repair,<br>and recycle e-waste for a greener future.</p>
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <div class="row">
+
+            <!--Volunteer Information-->
+            <div class="col-md-5 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h3 class="card-title" style="color: #2d6a4f;"><i class="fa-solid fa-hands-holding-circle"></i> Volunteer Roles</h3>
+                        <hr>
+
+                        <div class="mb-4">
+                            <h5 class="fw-bold"><i class="fa-solid fa-layer-group text-warning"></i> Tech Sorting
+                            </h5>
+                            <p class="text-muted small">Help us categorize incoming e-waste into working, repairable, and scrap piles. No technical experience required!</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="fw-bold"><i class="fa-solid fa-people-carry-box text-info"></i> Logistics Assistant</h5>
+                            <p class="text-muted small">Assist during our drop-off drives. You will help greet donors, carry boxes, and organize the storage units.</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="fw-bold"><i class="fa-solid fa-screwdriver-wrench text-danger"></i> Hardware Repair</h5>
+                            <p class="text-muted small">Have experience fixing PCs, laptops, or phones? Join our specialized team to refurbish tech for low-income students.</p>
+                        </div>
+
+                        <div class="alert alert-success mt-4 mb-0" role="alert">
+                            <i class="fa-solid fa-award"></i> <strong>Perks:</strong> All volunteers will receive a Green Tech Club t-shirt and USSDC points!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Application Form-->
+            <div class="col-md-7 mb-4">
+                <div class="card shadow-sm border-success">
+                    <div class="card-header text-white" style="background-color: #2d6a4f;">
+                        <h4 class="mb-0">Volunteer Application</h4>
+                    </div>
+                    <div class="card-body bg-light">
+                        <form id="volunteerForm">
+                            <!--Name & Email-->
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="volName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="volName" name="volName" placeholder="John Doe" required>
+                                </div>
+                                <div class="col">
+                                    <label for="volEmail" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="volEmail" name="volEmail" placeholder="name@example.com" required>
+                                </div>
+                            </div>
+
+                            <!--Role Selection-->
+                            <div class="mb-3">
+                                <label for="rolePref" class="form-label">Preferred Role</label>
+                                <select class="form-select" id="rolePref" name="rolePref" required>
+                                    <option value="" selected disabled>Select a role...</option>
+                                    <option value="sorter">Tech Sorting</option>
+                                    <option value="helper">Logistics Assistant</option>
+                                    <option value="repairer">Hardware Repair</option>
+                                    <option value="any">Any Available Role</option>
+                                </select>
+                            </div>
+
+                            <!--Availability Checkboxes-->
+                            <div class="mb-3">
+                                <label class="form-label">Availability</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="availWeekdays" value="weekdays">
+                                    <label class="form-check-label" for="availWeekdays">Weekdays</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="availWeekends" value="weekends">
+                                    <label class="form-check-label" for="availWeekends">Weekends</label>
+                                </div>
+                            </div>
+
+                            <!--Message Box-->
+                            <div class="mb-4">
+                                <label for="volMessage" class="form-label">Why do you want to join us? (Optional)</label>
+                                <textarea class="form-control" id="volMessage" rows="3" placeholder="Tell us a bit about yourself..."></textarea>
+                            </div>
+
+                            <!--Submit & Clear Buttons-->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="reset" class="btn btn-outline-secondary" id="clearBtn">Clear</button>
+                                <button type="submit" class="btn btn-success btn-lg">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="global.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            //------------------ Storage & Form Handling-----------------//
+            const nameInput = $('#volName');
+            const emailInput = $('#volEmail');
+            const formContainer = $('.card-body.bg-light');
+
+            // Load saved data from localStorage
+            if (localStorage.getItem('gt_savedName')) {
+                nameInput.val(localStorage.getItem('gt_savedName'));
+            }
+
+            if (localStorage.getItem('gt_savedEmail')) {
+                emailInput.val(localStorage.getItem('gt_savedEmail'));
+            }
+
+            nameInput.on('input', function () {
+                localStorage.setItem('gt_savedName', nameInput.val());
+            });
+
+            emailInput.on('input', function () {
+                localStorage.setItem('gt_savedEmail', emailInput.val());
+            });
+
+            //Check if form has been submitted this session
+            if (sessionStorage.getItem('gt_volFormSubmitted') === 'true') {
+                showSuccessMessage();
+            }
+
+            //Allow user to clear form
+            $('#clearBtn').on('click', function () {
+                localStorage.removeItem('gt_savedName');
+                localStorage.removeItem('gt_savedEmail');
+            });
+
+            //AJAX Form Submission
+            $('#volunteerForm').on('submit', function (event) {
+                event.preventDefault();
+
+                //Submit button become loading and prevent spam-clicking
+                const submitBtn = $(this).find('button[type="submit"]');
+                submitBtn.html('<i class="fa-solid fa-spinner fa-spin"></i> Submitting...');
+                submitBtn.prop('disabled', true);
+
+                //Gather form data
+                const formData = {
+                    name: nameInput.val(),
+                    email: emailInput.val(),
+                    role: $('#rolePref').val(),
+                    message: $('#volMessage').val()
+                };
+
+                //Simulate sending form data
+                $.ajax({
+                    url: 'https://jsonplaceholder.typicode.com/posts',
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (response) {
+                        console.log("API Response:", response);
+
+                        // Save session state to prevent double submission
+                        sessionStorage.setItem('gt_volFormSubmitted', 'true');
+
+                        // Clear inputs from local storage upon successful submission
+                        localStorage.removeItem('gt_savedName');
+                        localStorage.removeItem('gt_savedEmail');
+
+                        showSuccessMessage();
+                    },
+                    error: function (error) {
+                        alert("There was an error communicating with the API. Please try again.");
+                        submitBtn.html('Submit Application');
+                        submitBtn.prop('disabled', false);
+                    }
+                });
+            });
+
+            //----------------------After Submit--------------------//
+            function showSuccessMessage() {
+                //Get current page URL to share
+                const currentUrl = encodeURIComponent(window.location.href);
+                const shareText = encodeURIComponent("I just signed up to volunteer with the Green Tech Club! Join me in making a difference!");
+
+                //Success message
+                formContainer.html(`
+                    <div class="alert alert-success text-center mb-0 p-4" role="alert">
+                        <i class="fa-solid fa-circle-check fa-4x mb-3"></i>
+                        <h4 class="alert-heading fw-bold">Thank You!</h4>
+                        <p>Your volunteer application has been received. We will email you shortly for futher information.</p>
+
+                        <hr>
+                        <p class="mb-3 fw-bold">Help us spread the word!</p>
+                        
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${currentUrl}" target="_blank" class="btn btn-primary m-1" style="background-color: #1877F2; border: none;">
+                            <i class="fa-brands fa-facebook"></i> Share on Facebook
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url=${currentUrl}&text=${shareText}" target="_blank" class="btn btn-dark m-1">
+                            <i class="fa-brands fa-x-twitter"></i> Post to X
+                        </a>
+                    </div>
+                `);
+            }
+        });
+    </script>
+</body>
+
+</html>

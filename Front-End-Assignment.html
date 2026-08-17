@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
     <meta name="darkreader-lock"> <!--Had problem with dark mode-->
-    <title>Placeholder Name</title>
+    <title>Green Tech Club</title>
 
     <!--Link to Bootstrap framework
         Gives access to pre-written CSS classes-->
@@ -16,6 +16,262 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
 
+    <link rel="icon" type="image/png" href="images/leaf.png">
+
+    <style>
+        .page-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), var(--banner-img);
+            /*allows assignning of variable when called*/
+            background-size: cover;
+            /*Forces image to fill space without strecthing*/
+            background-position: var(--banner-position, center);
+            background-repeat: no-repeat;
+
+            height: 450px;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            align-items: flex-start;
+            padding-left: 50px;
+            padding-top: 50px;
+
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .page-content {
+            align-content: center;
+        }
+
+
+        .signup-window {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 28px 32px;
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-left: 5px solid #00c375;
+            /* accent tie-in to your nav hover green */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .signup-text h4 {
+            margin: 0 0 4px 0;
+            color: #14213d;
+            /* footer navy */
+            font-weight: 700;
+        }
+
+        .signup-text p {
+            margin: 0 0 16px 0;
+            color: #555555;
+            font-size: 0.95rem;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .signup-form input[type="email"] {
+            flex: 1 1 220px;
+            padding: 10px 14px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: #00c375;
+            box-shadow: 0 0 0 3px rgba(0, 195, 117, 0.15);
+        }
+
+        .signup-form button {
+            padding: 10px 22px;
+            background-color: #f2b705;
+            /* donate-button gold */
+            color: #14213d;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .signup-form button:hover,
+        .signup-form button:focus {
+            background-color: #d9a300;
+        }
+
+        .signup-confirmed {
+            margin: 0;
+            color: #007a49;
+            font-weight: 600;
+        }
+
+        /*the moving ticker bar*/
+        .news-ticker {
+            display: flex;
+            align-items: center;
+            background-color: #14213d;
+            /* site navy */
+            color: #ffffff;
+            padding: 16px 0;
+            overflow: hidden;
+            font-size: 1.3rem;
+        }
+
+        .news-ticker-label {
+            flex-shrink: 0;
+            background-color: #00c375;
+            /* site green */
+            color: #14213d;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 999px;
+            margin: 0 20px;
+            white-space: nowrap;
+        }
+
+        .news-ticker-track {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-ticker-content {
+            display: inline-flex;
+            white-space: nowrap;
+            animation: ticker-scroll 100s linear infinite;
+            padding-left: 100%;
+            /* starts off-screen right */
+        }
+
+        /* Pause on hover so can read a headline */
+        .news-ticker-content:hover {
+            animation-play-state: paused;
+        }
+
+        .news-item {
+            margin-right: 80px;
+        }
+
+        .news-item a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .news-item a:hover {
+            text-decoration: underline;
+            color: #f2b705;
+            /* site gold */
+        }
+
+        @keyframes ticker-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Respect users who've asked for reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .news-ticker-content {
+                animation: none;
+                padding-left: 0;
+                overflow-x: auto;
+            }
+        }
+
+        .page-content {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .page-content-sub {
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            text-align: left;
+            align-items: start;
+        }
+
+        .purpose-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .purpose-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: var(--img-position, center); /*Used as this image not background*/
+            display: block;
+        }
+
+        .purpose-card h4 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+            margin: 0;
+            font-size: 1.05rem;
+            color: #14213d;
+        }
+
+        .purpose-card h4 i {
+            font-size: 0.85rem;
+            color: #00c375;
+            transition: transform 0.2s;
+        }
+
+        .purpose-card.open h4 i {
+            transform: rotate(180deg);
+        }
+
+        .purpose-details {
+            display: none;
+            /* jQuery slideToggle controls this */
+            padding: 0 18px 18px 18px;
+            color: #555555;
+            font-size: 0.9rem;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .purpose-details p {
+            margin: 12px 0 0 0;
+        }
+
+        /* Stack to one column on smaller screens */
+        @media (max-width: 768px) {
+            .purpose-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+
+    </style>
 
 </head>
 
@@ -23,11 +279,109 @@
 
     <div id="nav-placeholder"></div>
 
-    <div class="container mt-5 text-center">
-        <h1>Welcome to the Green Tech Club</h1>
-        <p class="lead">Promoting environmental sustainability through innovation.</p>
-        
-    </div>
+    <section>
+        <div id="news-ticker" class="news-ticker">
+            <span class="news-ticker-label"><i class="fa-solid fa-leaf"></i> Green Tech News</span>
+            <div class="news-ticker-track">
+                <div class="news-ticker-content" id="news-ticker-content">
+                    <span class="news-item">Loading latest green tech headlines&hellip;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="page-container">
+        <div class="page-banner d-flex" style="--banner-img: url(images/Nature.jpg);">
+            <section class="container-fluid px-5 py-5 h-100 w-100">
+                <div class="row g-5 h-100">
+
+                    <!-- Left Section -->
+                    <div class="col-md-5 pe-2 align-self-center">
+                        <h2>Do you want to live in a world where the nature we grew up with
+                            <br>is lost to the younger generation?
+                        </h2>
+                        <p>Climate change, deforestation, and pollution aren't distant threats —
+                            they're happening now, in our lifetime.</p>
+
+                    </div>
+
+                    <!-- Right Section -->
+                    <div class="col-md-7 " style="border-left: 2px solid #7e7b7b;">
+                        <h2>GREEN TECHNOLOGY IS THE FUTURE</h2>
+                        <h4>Examples include:</h4>
+                        <ul>
+                            <li>Recycling</li>
+                            <li>Smart Cities</li>
+                            <li>Sustainable Technologies</li>
+                            <li>Renewable Energy</li>
+                        </ul>
+
+                        <p>With these advancements and action from more of humaity, a brighter future can be paved for
+                            generations to come</p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <div class="page-content">
+            <h1>What is the Purpose of Green Technology</h1>
+            <p class="page-content-sub">Click a card below to learn more.</p>
+
+            <div class="purpose-grid">
+
+                <div class="purpose-card" style="--img-position: 50% 20%" data-target="purpose-1">
+                    <img src="images/Water_waste.jpg" alt="Reducing environmental impact">
+                    <h4>Reduce Environmental Impact <i class="fa-solid fa-chevron-down"></i></h4>
+                    <div class="purpose-details" id="purpose-1">
+                        <p>Green technology minimizes pollution, waste, and resource depletion — from cleaner energy
+                            production to biodegradable materials that reduce landfill burden.</p>
+                    </div>
+                </div>
+
+                <div class="purpose-card" style="--img-position: 50% 60%" data-target="purpose-2">
+                    <img src="images/Agriculture.jpg" alt="Improving resource efficiency">
+                    <h4>Improve Resource Efficiency <i class="fa-solid fa-chevron-down"></i></h4>
+                    <div class="purpose-details" id="purpose-2">
+                        <p>Smart grids, efficient appliances, and precision agriculture help societies do more with less
+                            — cutting energy and water waste without sacrificing quality of life.</p>
+                    </div>
+                </div>
+
+                <div class="purpose-card" style="--img-position: 50% 60%" data-target="purpose-3">
+                    <img src="images/Sustainable_Future.jpg" alt="Building a sustainable future">
+                    <h4>Build a Sustainable Future <i class="fa-solid fa-chevron-down"></i></h4>
+                    <div class="purpose-details" id="purpose-3">
+                        <p>By investing in renewable infrastructure and circular economies today, green technology
+                            ensures future generations inherit a livable, resilient planet.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <!--Sign Up Box-->
+    <section id="signup-widget" class="signup-window">
+        <div class="signup-inner">
+            <div class="signup-text">
+                <h4>Stay in the loop</h4>
+                <p>Get updates on events, workshops, and new projects — no spam, just green tech.</p>
+            </div>
+
+            <form id="signup-form" class="signup-form">
+                <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address">
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p id="signup-confirmed" class="signup-confirmed" hidden>
+                ✓ You're signed up — thanks for joining!
+            </p>
+        </div>
+    </section>
 
     <div id="footer-placeholder"></div>
 
@@ -38,7 +392,103 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="global.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("signup-form");
+            const confirmed = document.getElementById("signup-confirmed");
 
+            // If they already signed up on a previous visit, skip the form.
+            if (localStorage.getItem("clubUpdatesSignup") === "true") {
+                form.hidden = true;
+                confirmed.hidden = false;
+            }
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const email = document.getElementById("signup-email").value;
+
+                // In a real deployment this would POST to a backend/API.
+                // For this prototype, we just remember the signup locally.
+                localStorage.setItem("clubUpdatesSignup", "true");
+                localStorage.setItem("clubUpdatesEmail", email);
+
+                form.hidden = true;
+                confirmed.hidden = false;
+            });
+        });
+
+        //moving ticker bar
+        document.addEventListener("DOMContentLoaded", () => {
+            loadNewsTicker();
+        });
+
+        async function loadNewsTicker() {
+            const contentEl = document.getElementById("news-ticker-content");
+
+            // Static fallback — used if the live fetch fails for any reason.
+            const fallbackHeadlines = [
+                "Malaysia targets 70% renewable energy capacity by 2050",
+                "Global solar panel efficiency reaches new record highs",
+                "Southeast Asia sees surge in green tech startup funding",
+                "New battery technology promises faster EV charging times",
+                "Universities across Malaysia launch sustainability initiatives"
+            ];
+
+            try {
+                const feedUrl = encodeURIComponent(
+                    "https://news.google.com/rss/search?q=green+technology&hl=en-MY&gl=MY&ceid=MY:en"
+                );
+                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`);
+                if (!res.ok) throw new Error(`News fetch failed: ${res.status}`);
+
+                const data = await res.json();
+                if (!data.items || data.items.length === 0) throw new Error("No articles returned");
+
+                renderTicker(data.items.slice(0, 8).map(item => ({
+                    title: item.title,
+                    link: item.link
+                })));
+            } catch (error) {
+                console.error("News ticker falling back to static headlines:", error);
+                renderTicker(fallbackHeadlines.map(title => ({ title, link: null })));
+            }
+        }
+
+        function renderTicker(items) {
+            const contentEl = document.getElementById("news-ticker-content");
+            contentEl.innerHTML = ""; // clear "Loading..." message
+
+            // Duplicate the list once so the scroll loop feels continuous
+            // (no visible gap between the last headline and the first repeat).
+            const doubledItems = items.concat(items);
+
+            doubledItems.forEach(item => {
+                const span = document.createElement("span");
+                span.className = "news-item";
+
+                if (item.link) {
+                    const a = document.createElement("a");
+                    a.href = item.link;
+                    a.target = "_blank";
+                    a.rel = "noopener noreferrer";
+                    a.textContent = item.title;
+                    span.appendChild(a);
+                } else {
+                    span.textContent = item.title;
+                }
+
+                contentEl.appendChild(span);
+            });
+        }
+
+        $(document).ready(function () {
+                $(".purpose-card h4").on("click", function () {
+                    const $card = $(this).closest(".purpose-card");
+                    $card.find(".purpose-details").slideToggle(250);
+                    $card.toggleClass("open");
+                });
+            });
+    </script>
 </body>
 
 </html>

@@ -1,233 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Donation Towards a Better World</title>
-        <meta charset="UTF-8">
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!--Link to Font Awesome, a free icon provider-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="global.css">
+<head>
+    <title>Donation Towards a Better World</title>
+    <meta charset="UTF-8">
 
-        <style>
-            body {
-                background-color: #faebd7; 
-            }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Link to Font Awesome, a free icon provider-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="global.css">
 
-            /* The Flex Container */
+    <link rel="icon" type="image/png" href="images/leaf.png">
+    <style>
+        /* The Flex Container */
+        .donation-flex {
+            display: flex;
+            flex-direction: row;
+            gap: 40px;
+            align-items: center;
+            padding: 50px 20px;
+            max-width: 1500px;
+            margin: 0 auto;
+            /* Centers the layout on large screens */
+        }
+
+        /* The Left Section */
+        .donation-layout {
+            flex: 3;
+            max-width: 700px;
+            align-self: flex-start;
+            text-align: left;
+        }
+
+        /* The Right Section (QR Card) */
+        .donation-qr {
+            flex: 0 0 420px;
+            margin-left: auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Sizing the QR Image inside the card */
+        .donation-qr img {
+            width: 70%;
+            height: auto;
+            margin-top: 15px;
+        }
+
+        .frequency-grid {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .amount-grid {
+            display: grid;
+            grid-template-columns: 100px 100px 100px 100px;
+            grid-template-rows: 50px 50px;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .Donate-button {
+            background-color: #ffffff;
+            border: 1px solid #afaeae;
+            padding: 15px 5px;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .custom-amount-box {
+            display: flex;
+            flex-direction: column;
+            /* Stacks the word "Other" on top of the input */
+            align-items: center;
+            /* Centers them horizontally */
+            justify-content: center;
+            /* Centers them vertically */
+
+            border: 1px solid #9aa0a7;
+            /* Matches the button borders */
+            border-radius: 12px;
+            /* Matches the button curves */
+            background-color: #ffffff;
+            padding: 5px;
+        }
+
+        .custom-amount-box input {
+            width: 80%;
+            height: 60%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            padding: 2px;
+        }
+
+        .custom-amount-box label {
+            font-size: 0.75rem;
+            /*smaller than usual*/
+            margin-bottom: 3px;
+        }
+
+        .Donate-button.active,
+        .custom-amount-box.active {
+            background-color: #007a49;
+            /* or your nav's #00c375 */
+            border-color: #007a49;
+            color: #ffffff;
+        }
+
+        .Donate-button:hover {
+            background-color: #f2b705;
+            /* your gold, for hover instead of active-blue */
+            border-color: #d9a300;
+            color: #14213d;
+        }
+
+        .donation-divider {
+            border: none;
+            border-top: 2px solid #000000;
+            margin: 15px 0;
+        }
+
+        .payment-method-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .payment-panel {
+            margin-top: 10px;
+        }
+
+        .bank-details {
+            text-align: left;
+            background-color: #f7faf8;
+            border: 1px solid #d5e5db;
+            border-radius: 10px;
+            padding: 18px 20px;
+        }
+
+        .bank-details p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+        }
+
+        .bank-note {
+            color: #777777;
+            font-size: 0.8rem !important;
+            font-style: italic;
+            margin-top: 10px !important;
+        }
+
+        .qr-description {
+            margin-top: 14px;
+            font-size: 0.9rem;
+            color: #555555;
+        }
+
+        .confirm-donate-btn {
+            width: 100%;
+            margin: 20px 20px 0 20px;
+            padding: 14px;
+            font-weight: 700;
+            background-color: #007a49;
+            color: #ffffff;
+            border-color: #007a49;
+        }
+
+        .confirm-donate-btn:hover:not(:disabled) {
+            background-color: #00c375;
+            border-color: #00c375;
+        }
+
+        .confirm-donate-btn:disabled {
+            background-color: #e0e0e0;
+            border-color: #cccccc;
+            color: #999999;
+            cursor: not-allowed;
+        }
+
+        .donate-hint {
+            margin: 8px 20px 0 20px;
+            font-size: 0.8rem;
+            color: #999999;
+        }
+
+        .bank-select-wrapper {
+            position: relative;
+            margin: 20px;
+        }
+
+        .bank-select-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .bank-chevron {
+            font-size: 0.75rem;
+            margin-left: auto;
+            transition: transform 0.2s;
+        }
+
+        .bank-select-btn.open .bank-chevron {
+            transform: rotate(180deg);
+        }
+
+        .bank-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            right: 0;
+            max-width: 250px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid #d5d5d5;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .bank-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            text-decoration: none;
+            color: #14213d;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+
+        .bank-option.selected {
+            background-color: #00c375;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .bank-option.selected:hover {
+            background-color: #00c375;
+            color: #ffffff;
+        }
+
+        .bank-option:last-child {
+            border-bottom: none;
+        }
+
+        .bank-option:hover {
+            background-color: #f7faf8;
+            color: #007a49;
+        }
+
+        @media (max-width: 768px) {
             .donation-flex {
-                display: flex;
-                flex-direction: row;
-                gap: 40px;
-                align-items: center;
-                padding: 50px 20px; /* Added some padding so it doesn't touch the screen edges */
-                max-width: 1500px;
-                margin: 0 auto; /* Centers the layout on large screens */
+                flex-direction: column;   
+                padding: 30px 16px;
+                gap: 24px;
             }
 
-            /* The Left Section */
             .donation-layout {
-                flex: 3;
-                align-self: flex-start;
-                text-align: left;
+                max-width: 100%;
+                text-align: center;       
             }
 
-            /* The Right Section (QR Card) */
             .donation-qr {
-                flex: 1;
-                margin-left: auto;
-                background-color: #ffffff;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                text-align: center;
+                flex: 1 1 auto;        
+                width: 100%;
+                max-width: 420px;        
+                margin: 0 auto;           
             }
 
-            /* Sizing the QR Image inside the card */
-            .donation-qr img {
-                width: 40%;
-                height: auto;
-                margin-top: 15px;
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);  
             }
 
-            .frequency-grid{
-                display: grid;
-                grid-template-columns: 100px 100px 100px;
-                justify-content: center;
-                gap: 20px;
-                margin: 20px;
+            .frequency-grid {
+                grid-template-columns: repeat(3, 1fr);  
             }
-            .amount-grid{
-                display: grid;
-                grid-template-columns: 100px 100px 100px 100px;
-                grid-template-rows: 50px 50px;
-                gap: 20px;
-                margin: 20px;
+        }
+
+        @media (max-width: 400px) {
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
-            .Donate-button{
-                background-color: #ffffff;
-                border: 1px solid #afaeae;
-                padding: 15px 5px;
-                border-radius: 12px;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: 0.2s;
+            .Donate-button {
+                font-size: 0.85rem;
+                padding: 12px 4px;
             }
+        }
+    </style>
+</head>
 
-            .custom-amount-box{
-                display: flex;
-                flex-direction: column; /* Stacks the word "Other" on top of the input */
-                align-items: center;    /* Centers them horizontally */
-                justify-content: center;/* Centers them vertically */
-                
-                border: 1px solid #9aa0a7; /* Matches the button borders */
-                border-radius: 12px;        /* Matches the button curves */
-                background-color: #ffffff;
-                padding: 5px;
-            }
+<body>
 
-            .custom-amount-box input{
-                width: 80%;
-                height: 60%;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                text-align: center;
-                padding: 2px;
-            }
+    <div id="nav-placeholder"></div>
 
-            .custom-amount-box label{
-                font-size: 0.75rem; /*smaller than usual*/
-                margin-bottom: 3px;
-            }
+    <main class="donation-flex">
 
-            .custom-amount-box.active{
-                border: 2px solid #9aa0a7;
-                background-color: #2229a5;
-                color: #ffffff;
-            }
+        <!-- Applied the sizing class to the left section -->
+        <section class="donation-layout">
+            <h1>Help Green Tech Grow</h1>
+            <p class="lead">Every ringgit funds real projects — solar workshops, campus recycling drives, and research
+                that gets
+                students building, not just talking.</p>
 
-            .Donate-button:hover{
-                background-color: #2229a5;
-                border-color: #000000;
-            }
+            <ul class="donation-impact">
+                <li><strong>RM 30</strong> — sponsors materials for one workshop attendee</li>
+                <li><strong>RM 100</strong> — funds a campus sustainability event</li>
+                <li><strong>RM 500</strong> — supports a full student-led project</li>
+            </ul>
+        </section>
 
-            .Donate-button.active {
-                background-color: #2229a5;
-                color: white;
-            }
+        <!-- Right Section -->
+        <section class="donation-qr">
+            <form action="https://youtu.be/dQw4w9WgXcQ">
 
-            .donation-divider {
-                border: none;
-                border-top: 2px solid #000000;
-                margin: 15px 0;
-            }
+                <h4>Payment Method</h4>
 
-        </style>
-    </head>
+                <div class="payment-method-grid">
+                    <button type="button" class="Donate-button payment-btn active" data-method="qr">
+                        <i class="fa-solid fa-qrcode"></i> QR Code
+                    </button>
+                    <button type="button" class="Donate-button payment-btn" data-method="bank">
+                        <i class="fa-solid fa-building-columns"></i> Bank Transfer
+                    </button>
+                </div>
 
-    <body> 
-        
-        <div id ="nav-placeholder"></div>
-        
-        <!--
-        <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container">
-                <a class="logo-box" href="Front-End-Assignment.html">
-                    <i class="fa-solid fa-leaf"></i> GREEN<br>TECH
-                </a>
-            </div> 
-        </nav>-->
+                <!-- QR panel (shown by default) -->
+                <div id="qr-panel" class="payment-panel">
+                    <img src="images/QR .png" alt="Donation QR">
+                </div>
 
-       
-        <main class="donation-flex"> 
-            
-            <!-- Applied the sizing class to the left section -->
-            <section class="donation-layout">
-                <h1>Green Tech is here to steal your MONEY</h1>
-                <p>idk what to  really write here</p>
-            </section>
-            
-            <!-- Right Section -->
-            <section class="donation-qr">
-                <form action="https://youtu.be/dQw4w9WgXcQ">
+                <!-- Bank details panel (hidden by default) -->
+                <div id="bank-panel" class="payment-panel" hidden>
+
+                    <div class="bank-select-wrapper">
+                        <button type="button" class="Donate-button bank-select-btn" id="bank-select-btn">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span id="bank-select-label">Choose Your Bank</span>
+                            <i class="fa-solid fa-chevron-down bank-chevron"></i>
+                        </button>
+
+                        <div class="bank-dropdown" id="bank-dropdown" hidden>
+                            <a href="https://www.maybank2u.com.my/home/m2u/common/login.do" target="_blank"
+                                rel="noopener noreferrer" class="bank-option">
+                                <i class="fa-solid fa-building-columns"></i> Maybank2u
+                            </a>
+                            <a href="https://www.cimbclicks.com.my/" target="_blank" rel="noopener noreferrer"
+                                class="bank-option">
+                                <i class="fa-solid fa-building-columns"></i> CIMB Clicks
+                            </a>
+                            <a href="https://www.pbebank.com/" target="_blank" rel="noopener noreferrer"
+                                class="bank-option">
+                                <i class="fa-solid fa-building-columns"></i> Public Bank (PBe)
+                            </a>
+                        </div>
+                    </div>
+
                     <h4>Donation amount (MYR)</h4>
                     <hr class="donation-divider">
 
-                    <div class = "frequency-grid">
+                    <div class="frequency-grid">
                         <button type="button" class="Donate-button">Once</button>
                         <button type="button" class="Donate-button">Monthly</button>
                         <button type="button" class="Donate-button">Yearly</button>
                     </div>
 
-                    <div class = "amount-grid">
+                    <div class="amount-grid">
                         <button type="button" class="Donate-button">RM 10</button>
                         <button type="button" class="Donate-button">RM 30</button>
                         <button type="button" class="Donate-button">RM 50</button>
                         <button type="button" class="Donate-button">RM 100</button>
-
                         <button type="button" class="Donate-button">RM 500</button>
                         <button type="button" class="Donate-button">RM 1000</button>
-                        <button type="button" class="Donate-button">RM 2000</button>   
-                        
-                        <div class = "custom-amount-box">
+                        <button type="button" class="Donate-button">RM 2000</button>
+
+                        <div class="custom-amount-box">
                             <label for="custom-amount">Other</label>
-                            <input type="number" id = "custom-amount">
+                            <input type="number" id="custom-amount">
                         </div>
                     </div>
 
-                    
-                    <img src="images/QR .png" alt="Donation QR">
-                </form>
-            </section>
-            
-        </main>
-        
-        <!--The javascript for the event handling-->
-        <script>
-            const donatebtn = document.querySelectorAll(".amount-grid .Donate-button");
-            const frequencybtn = document.querySelectorAll(".frequency-grid .Donate-button");
-            const custombox = document.querySelector(".custom-amount-box");
-            const customInput = document.querySelector("#custom-amount");
+                    <button type="button" id="bank-donate-btn" class="Donate-button confirm-donate-btn" disabled>
+                        Donate Now
+                    </button>
+                    <p id="bank-donate-hint" class="donate-hint">Select a bank and an amount to continue</p>
+                </div>
+            </form>
+        </section>
+    </main>
 
-            //amount-grid btn
-            for(let i = 0; i < donatebtn.length; i++){// loops and attach event to all btn
-                donatebtn[i].onclick = function(e){
+    <div id="footer-placeholder"></div>
 
-                    for(let j = 0; j <donatebtn.length; j++){ //Removes active 
-                        donatebtn[j].classList.remove('active'); // active =  .Donate-button.active
-                    }
+    <!--The javascript for the event handling-->
+    <script>
 
-                    custombox.classList.remove('active');//removes 'active' if accidentally clicked option
-                    e.target.classList.add('active');
-                };
+        //Element references
 
-            }
-            customInput.onfocus = function(){
-                for(let j = 0; j < donatebtn.length; j++){
+        const donatebtn = document.querySelectorAll(".amount-grid .Donate-button");
+        const frequencybtn = document.querySelectorAll(".frequency-grid .Donate-button");
+        const custombox = document.querySelector(".custom-amount-box");
+        const customInput = document.querySelector("#custom-amount");
+
+        const paymentBtns = document.querySelectorAll(".payment-btn");
+        const qrPanel = document.getElementById("qr-panel");
+        const bankPanel = document.getElementById("bank-panel");
+
+        const bankSelectBtn = document.getElementById("bank-select-btn");
+        const bankDropdown = document.getElementById("bank-dropdown");
+        const bankSelectLabel = document.getElementById("bank-select-label");
+
+        const bankDonateBtn = document.getElementById("bank-donate-btn");
+        const bankDonateHint = document.getElementById("bank-donate-hint");
+
+
+        //Shared state
+        let selectedAmount = null;
+        let selectedBank = null;
+
+        function updateDonateButtonState() {
+            const ready = selectedBank && selectedAmount;
+            bankDonateBtn.disabled = !ready;
+            bankDonateHint.textContent = ready
+                ? `Ready to donate RM ${selectedAmount} via ${selectedBank.name}`
+                : "Select a bank and an amount to continue";
+        }
+
+        //Amount selection (grid buttons + custom input)
+        for (let i = 0; i < donatebtn.length; i++) {
+            donatebtn[i].onclick = function (e) {
+                for (let j = 0; j < donatebtn.length; j++) {
                     donatebtn[j].classList.remove('active');
                 }
-                custombox.classList.add('active');
+                custombox.classList.remove('active');
+                e.target.classList.add('active');
+
+                selectedAmount = e.target.textContent.replace("RM ", "").trim();
+                updateDonateButtonState();
             };
-            
+        }
 
-            //frequency btn
-            for(let i = 0; i < frequencybtn.length; i++){// loops and attach event to all btn
-                frequencybtn[i].onclick = function(e){
+        customInput.oninput = function () {
+            selectedAmount = customInput.value || null;
+            updateDonateButtonState();
+        };
 
-                    for(let j = 0; j <frequencybtn.length; j++){ //Removes active 
-                        frequencybtn[j].classList.remove('active'); // active =  .Donate-button.active
-                    }
-                    e.target.classList.add('active');
-                };
+        customInput.onfocus = function () {
+            for (let j = 0; j < donatebtn.length; j++) {
+                donatebtn[j].classList.remove('active');
             }
-         </script>
+            custombox.classList.add('active');
+        };
+
+       
+        //Frequency selection (Once / Monthly / Yearly)
+        for (let i = 0; i < frequencybtn.length; i++) {
+            frequencybtn[i].onclick = function (e) {
+                for (let j = 0; j < frequencybtn.length; j++) {
+                    frequencybtn[j].classList.remove('active');
+                }
+                e.target.classList.add('active');
+            };
+        }
+
+        //Payment method toggle (QR vs Bank Transfer)
+        for (let i = 0; i < paymentBtns.length; i++) {
+            paymentBtns[i].onclick = function (e) {
+                for (let j = 0; j < paymentBtns.length; j++) {
+                    paymentBtns[j].classList.remove("active");
+                }
+                e.currentTarget.classList.add("active");
+
+                const method = e.currentTarget.dataset.method;
+                qrPanel.hidden = method !== "qr";
+                bankPanel.hidden = method !== "bank";
+            };
+        }
+
+        //Bank selector dropdown 
+        bankSelectBtn.onclick = function (e) {
+            e.preventDefault(); // stops it acting like a form submit
+            const isOpen = !bankDropdown.hidden;
+            bankDropdown.hidden = isOpen;
+            bankSelectBtn.classList.toggle("open", !isOpen);
+        };
+
+        // Choosing a bank just records the choice — it does NOT redirect yet
+        // Navigation only happens when "Donate Now" is clicked 
+        document.querySelectorAll(".bank-option").forEach(option => {
+            option.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                document.querySelectorAll(".bank-option").forEach(opt => {
+                    opt.classList.remove("selected");
+                });
+                option.classList.add("selected");
+
+                selectedBank = {
+                    name: option.textContent.trim(),
+                    url: option.href
+                };
+
+                bankSelectLabel.textContent = selectedBank.name;
+                bankDropdown.hidden = true;
+                bankSelectBtn.classList.remove("open");
+                updateDonateButtonState();
+            });
+        });
+
+        // Close the dropdown if the user clicks anywhere outside it
+        document.addEventListener("click", function (e) {
+            if (!e.target.closest(".bank-select-wrapper")) {
+                bankDropdown.hidden = true;
+                bankSelectBtn.classList.remove("open");
+            }
+        });
+
+        //Final confirmation — Donate Now button
+        bankDonateBtn.onclick = function () {
+            if (selectedBank && selectedAmount) {
+                window.open(selectedBank.url, "_blank", "noopener,noreferrer");
+            }
+        };
+    </script>
 
 
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        <!--Global Script-->
-        <script src="global.js"></script>
-    </body>
+    <!--Global Script-->
+    <script src="global.js"></script>
+</body>
+
 </html>

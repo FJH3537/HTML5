@@ -1,34 +1,70 @@
 /*Navbar*/
 .navbar-custom {
-    background-color: #2a815b;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: 10px solid #004a29;
+    background-color: #004a29;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
 }
 
 .navbar-custom .nav-link {
     /*Descendant Selectors*/
     /*The Menu Text*/
-    color: #5bc0de !important;
+    color: #ffffff !important;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    padding: 30px 15px !important;
+    padding: 20px 15px !important;
     transition: color 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 30px;
     
 }
 
-.navbar-custom .nav-link:hover,
-/*I dont fucking know, turn white i guess*/
-.navbar-custom .nav-link:focus {
-    color: #ffffff !important;
-    /* FIXED: Standard 6-digit white */
+.navbar-custom .nav-link:hover, .navbar-custom .nav-link:focus {
+    color: #000000 !important;
+    background-color: #00c375;
 }
 
 .navbar-custom .navbar-collapse {
     /*A collapsing Menu bar*/
-    background-color: #000000;
+    background-color: transparent;
+    margin-left: 5px;
 }
+
+.navbar-custom .navbar-collapse .dropdown-menu {
+    padding: 10px 10px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-top: 19px;
+}
+
+.navbar-custom .navbar-collapse .dropdown-menu.show {
+    animation: fadeSlideDown 0.3s ease forwards;/*Triggers when opened*/
+}
+
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0;                  
+        transform: translateY(15px); 
+    }
+    100% {
+        opacity: 1;                 
+        transform: translateY(0);    
+    }
+}
+
+.navbar-custom .navbar-collapse .dropdown-menu .dropdown-item {
+    color: #333333;       
+    padding: 12px 20px;   
+    transition: 0.2s;
+    
+    /* Adds a thin, light grey line to the bottom of every item */
+    border-bottom: 1px solid #7e7b7b; 
+}
+
+.navbar-custom .navbar-collapse .dropdown-menu li:last-child .dropdown-item {
+    border-bottom: none;
+}
+/**/
 
 .navbar-custom .donate-link {
     background-color: #ffc107 !important;
@@ -43,7 +79,39 @@
     font-weight: 900;
     font-size: 1.2rem;
     text-decoration: none;
+    border-radius: 30px;
 }
+
+.email-icon i {
+    font-size: 1.5rem;   
+    color: #ffffff;      
+    transition: 0.2s;    
+}
+
+.email-icon i:hover {
+    color: #E1306C;     
+}
+
+.fb-icon i {
+    font-size: 1.5rem;   
+    color: #ffffff;      
+    transition: 0.2s;    
+}
+
+.fb-icon i:hover {
+    color: #E1306C;     
+}
+
+.ig-icon i {
+    font-size: 1.5rem;   
+    color: #ffffff;      
+    transition: 0.2s;    
+}
+
+.ig-icon i:hover {
+    color: #E1306C;     
+}
+
 
 /*Footer*/
 /* Top Yellow CTA Section */
@@ -140,4 +208,35 @@
 }
 .legal-links a:hover {
     color: #ffffff;
+}
+
+/*added below cookie banner animation*/
+@keyframes cookieSlideRight {
+    from {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes cookieSlideLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+}
+
+.cookie-slide-in {
+    animation: cookieSlideRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.cookie-slide-out {
+    animation: cookieSlideLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
 }

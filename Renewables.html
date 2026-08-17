@@ -2,24 +2,27 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Renewable Energy Adoption</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Mobile responsiveness enforcement--> 
+        <meta name="description" content="Interactive panels on global renewable energy adoption">
+        <title>Statistics regarding global renewable energy adoption</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <!--Link to Font Awesome, a free icon provider-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="global.css">
 
+        <link rel="icon" type="image/png" href="images/leaf.png">
         <style>
             .chart-window{
-                max-width: 1000px;
+                max-width: 1200px;
                 margin: 0 auto;
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 40px;
+                margin-bottom: 40px;
 
                 background-color: #ffffff;
                 border-radius: 12px;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s, box-shadow 0.2s;
             }
 
             .chart-window iframe{
@@ -29,10 +32,10 @@
                 display: block; /*Removes default gap*/
             }
 
-            .page-banner-1{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), url("images/growth.jpg");
+            .page-banner{
+                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), var(--banner-img); /*allows assignning of variable when called*/
                 background-size: cover; /*Forces image to fill space without strecthing*/
-                background-position: center;
+                background-position: var(--banner-position, center);
                 background-repeat: no-repeat;
 
                 height: 250px;
@@ -49,84 +52,43 @@
                 text-align: left;
             }
 
-            .page-banner-2{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), url("images/Hydro.jpg");
-                background-size: cover; /*Forces image to fill space without strecthing*/
-                background-position: center;
-                background-repeat: no-repeat;
-
-                height: 250px;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: left;
-                align-items: flex-start;
-                padding-left: 50px;
-                padding-top: 50px;
-
-                color: #ffffff;
-                text-align: left;
+            .page-banner p{
+                font-size: 1.2rem;
             }
 
-            .page-banner-3{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), url("images/Solar.jpg");
-                background-size: cover; /*Forces image to fill space without strecthing*/
-                background-position: center;
-                background-repeat: no-repeat;
-
-                height: 250px;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: left;
-                align-items: flex-start;
-                padding-left: 50px;
-                padding-top: 50px;
-
-                color: #ffffff;
-                text-align: left;
+            .learn-more-box {
+                display: block;
+                text-align: center;
+                padding: 14px;
+                background-color: #b0b1b1;
+                border-bottom: 1px solid #e5e5e5;
+                text-decoration: none;
+                color: #14213d;
+                font-weight: 600;
+                font-size: 1.1rem;
+                transition: background-color 0.2s, color 0.2s;
             }
 
-            .page-banner-4{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), url("images/Wind_2.jpg");
-                background-size: 100% auto; /*Forces image to fill space without strecthing*/
-                background-position: 25% 60%;
-                background-repeat: no-repeat;
-
-                height: 250px;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: left;
-                align-items: flex-start;
-                padding-left: 50px;
-                padding-top: 50px;
-
+            .learn-more-box:hover {
+                background-color: #00c375;
                 color: #ffffff;
-                text-align: left;
             }
 
-            .page-banner-5{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), url("images/Biofuel_2.jpg");
-                background-size: cover; /*Forces image to fill space without strecthing*/
-                background-position: 50% 25%;
-                background-repeat: no-repeat;
+            .chart-window:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            }
 
-                height: 250px;
-                width: 100%;
+            .section-icon {
+                font-size: 2rem;
+                margin-bottom: 10px;
+                color: #00c375;
+            }
 
-                display: flex;
-                flex-direction: column;
-                justify-content: left;
-                align-items: flex-start;
-                padding-left: 50px;
-                padding-top: 50px;
-
-                color: #ffffff;
-                text-align: left;
+            @media (max-width: 768px) {
+                .chart-window iframe {
+                    height: 400px;
+                }
             }
         </style>
 
@@ -135,55 +97,92 @@
     <body>
         <div id = "nav-placeholder"></div>
        
-        <!--Renewable in shares of primary energy -->
-        <section class="page-banner-1">
-            <h3>Statistical Proof of the advancements and adoption of renewable energy can show us that CHANGE IS POSSIBLE </h3>
-        </section>
-        <div class ="chart-window">
-            <iframe src="https://ourworldindata.org/grapher/energy-mix?country=BRA~GBR~PHL&source=renewables&metric=share&tab=map&hideControls=true" 
-                    loading="lazy"
-                    scrolling = "no"
-                    allow="web-share; clipboard-write"></iframe>
-        </div>
+        <main>
+            <!--Renewable in shares of primary energy -->
+        <section class ="page-banner" style ="--banner-img: url('images/growth.jpg');">
+            <h2>Statistical Proof of the advancements and adoption of renewable energy can show us that <br><em>CHANGE IS POSSIBLE</em></h2>
+            <p>Explore how renewable sources are reshaping the global energy mix, country by country.</p>
+        </section> 
+            <div class ="chart-window">
+                <iframe src="https://ourworldindata.org/grapher/energy-mix?country=BRA~GBR~PHL&source=renewables&metric=share&tab=map&hideControls=true" 
+                        title="Global hydropower generation by country" loading="lazy"
+                        scrolling = "no"
+                        allow="web-share; clipboard-write"></iframe>
+            </div>
 
         
         <!--Hydro-->
-        <section class = "page-banner-2"></section>
-        <div class ="chart-window">
-            <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=CHN~IND~BWA~USA~SWE~FRA&source=hydro&metric=generation&frequency=annual&tab=map&hideControls=true" 
-                    loading="lazy"
-                    allow="web-share; clipboard-write"></iframe>
-        </div>
+        <section class = "page-banner" style="--banner-img: url(images/Hydro.jpg);">
+            <i class="fa-solid fa-water section-icon"></i>
+            <h2>Hydropower: The World's Oldest Renewable Source</h2>
+            <p>Hydropower remains one of the most widely adopted clean energy sources globally.</p>
+        </section>
+            <div class ="chart-window">
+                <a href="RE.html" class="learn-more-box">
+                    Learn more about Hydropower
+                </a>
+
+                <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=CHN~IND~BWA~USA~SWE~FRA&source=hydro&metric=generation&frequency=annual&tab=map&hideControls=true" 
+                        loading="lazy"
+                        allow="web-share; clipboard-write"></iframe>
+            </div>
 
         
         <!--Solar-->
-        <section class="page-banner-3"></section>
-        <div class = "chart-window">
-            <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=IND~CHN~AUS~USA~ZAF~ESP~OWID_WRL&source=solar&metric=generation&frequency=annual&tab=map&hideControls=true" 
-                    loading="lazy" 
-                    allow="web-share; clipboard-write"></iframe>
-        </div>
+        <section class="page-banner" style="--banner-img: url(images/Solar.jpg);">
+            <i class="fa-solid fa-sun section-icon"></i>
+            <h2>Solar: The Fastest-Growing Clean Energy</h2>
+            <p>Falling costs and rapid installation have made solar the fastest-scaling renewable technology worldwide.</p>
+
+        </section>
+            <div class = "chart-window">
+                <a href="RE.html" class="learn-more-box">
+                    Learn more about Solarpower
+                </a>
+
+                <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=IND~CHN~AUS~USA~ZAF~ESP~OWID_WRL&source=solar&metric=generation&frequency=annual&tab=map&hideControls=true" 
+                        loading="lazy" 
+                        allow="web-share; clipboard-write"></iframe>
+            </div>
 
         <!--Wind-->
-        <section class="page-banner-4"></section>
-        <div class = "chart-window">
-            <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=GBR~IND~AUS~NZL~DNK&source=wind&metric=generation&frequency=annual&tab=map&hideControls=true" 
-                    loading="lazy" 
-                    allow="web-share; clipboard-write"></iframe>
-        </div>
+        <section class="page-banner" style="--banner-img: url(images/Wind_2.jpg); --banner-position: 25% 60%;">
+            <i class="fa-solid fa-wind section-icon"></i>
+            <h2>Wind: Powering Nations from Coast to Coast</h2>
+            <p>From offshore farms to inland turbines, wind energy now supplies a growing share of national grids.</p>
+
+        </section>
+            <div class = "chart-window">
+                <a href="RE.html" class="learn-more-box">
+                    Learn more about Windpower
+                </a>
+
+                <iframe src="https://ourworldindata.org/grapher/electricity-mix?country=GBR~IND~AUS~NZL~DNK&source=wind&metric=generation&frequency=annual&tab=map&hideControls=true" 
+                        loading="lazy" 
+                        allow="web-share; clipboard-write"></iframe>
+            </div>
 
         <!--BioFuel-->
-        <section class="page-banner-5"></section>
-        <div class = "chart-window">
-           <iframe src="https://ourworldindata.org/grapher/biofuel-production?tab=map" 
-           loading="lazy" 
-           allow="web-share; clipboard-write"></iframe>
-        </div>
+        <section class="page-banner" style="--banner-img: url(images/Biofuel_2.jpg); --banner-position: 50% 25%;">
+            <i class="fa-solid fa-tree section-icon"></i>
+            <h2>Biofuel: Turning Waste into Energy</h2>
+            <p>Agricultural and organic waste are converted into usable fuel, offering a renewable alternative to fossil fuels.</p>
 
+        </section>
+            <div class = "chart-window">
+                <a href="RE.html" class="learn-more-box">
+                    Learn more about Biopower
+                </a>
+
+                <iframe src="https://ourworldindata.org/grapher/biofuel-production?tab=map" 
+                        loading="lazy" 
+                        allow="web-share; clipboard-write"></iframe>
+            </div>
+        </main>
+        
         <div id="footer-placeholder"></div>
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
         <!-- 2. Load Bootstrap Library Second -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="global.js"></script>
