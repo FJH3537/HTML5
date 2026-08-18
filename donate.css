@@ -11,8 +11,8 @@
 
 /* The Left Section */
 .donation-layout {
-    flex: 3;
-    max-width: 700px;
+    flex: 4;
+    max-width: 850px;
     align-self: flex-start;
     text-align: left;
 }
@@ -23,8 +23,9 @@
     margin-left: auto;
     background-color: #ffffff;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;              
+    border-top: 4px solid #00c375;  
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);  
     text-align: center;
 }
 
@@ -33,6 +34,17 @@
     width: 70%;
     height: auto;
     margin-top: 15px;
+    border: 6px solid #f7faf8;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.donation-qr h4 {
+    color: #14213d;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-bottom: 4px;
 }
 
 .frequency-grid {
@@ -53,10 +65,12 @@
 
 .Donate-button {
     background-color: #ffffff;
-    border: 1px solid #afaeae;
-    padding: 15px 5px;
-    border-radius: 12px;
-    font-size: 1rem;
+    border: 1.5px solid #dddddd;
+    padding: 14px 5px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333333;
     cursor: pointer;
     transition: 0.2s;
 }
@@ -95,23 +109,23 @@
 
 .Donate-button.active,
 .custom-amount-box.active {
-    background-color: #007a49;
-    /* or your nav's #00c375 */
-    border-color: #007a49;
+    background-color: #00c375;    /* switched to your brighter brand green */
+    border-color: #00c375;
     color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 195, 117, 0.3);
 }
 
 .Donate-button:hover {
-    background-color: #f2b705;
-    /* your gold, for hover instead of active-blue */
-    border-color: #d9a300;
+    background-color: #fff8e1;   /* soft gold tint instead of solid gold — less jarring */
+    border-color: #f2b705;
     color: #14213d;
+    transform: translateY(-2px);  /* subtle lift */
+    box-shadow: 0 4px 10px rgba(242, 183, 5, 0.25);
 }
 
 .donation-divider {
     border: none;
-    border-top: 2px solid #000000;
-    margin: 15px 0;
+    border-top: 1px solid #e5e5e5;   
 }
 
 .payment-method-grid {
@@ -126,6 +140,12 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+}
+
+.payment-btn.active {
+    background-color: #14213d;  
+    border-color: #14213d;
+    color: #ffffff;
 }
 
 .payment-panel {
@@ -254,6 +274,113 @@
 .bank-option:hover {
     background-color: #f7faf8;
     color: #007a49;
+}
+
+/*New*/
+.donation-layout h1 {
+    color: #14213d;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.donation-layout .lead {
+    font-size: 1.15rem;
+    color: #555555;
+    max-width: 480px;
+    margin-bottom: 28px;
+}
+
+.donation-impact {
+    list-style: none;
+    padding: 0;
+    max-width: 480px;
+}
+
+.donation-impact li {
+    padding: 16px 0;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1rem;
+    color: #333333;
+}
+
+.donation-impact li:last-child {
+    border-bottom: none;
+}
+
+.donation-impact strong {
+    color: #007a49;
+    margin-right: 6px;
+}
+
+.impact-gallery {
+    margin-top: 30px;
+    max-width: 700px;
+}
+
+.impact-gallery h4 {
+    color: #14213d;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.impact-gallery .carousel {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.impact-gallery .carousel-item img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+.impact-gallery .carousel-caption {
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75));
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px 16px 14px 16px;
+    text-align: left;
+}
+
+.impact-gallery .carousel-caption p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Custom indicator dots (Bootstrap's defaults are thin bars — this matches your site's rounder aesthetic) */
+.carousel-indicators-custom {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.carousel-indicators-custom button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.carousel-indicators-custom button.active {
+    background-color: #00c375;
+    width: 20px;
+    border-radius: 4px;
+}
+
+body {
+    background-color: #f7faf8; /* very light green tint, ties to your palette without competing */
 }
 
 @media (max-width: 768px) {
