@@ -239,7 +239,98 @@
 
 /* Stack to one column on smaller screens */
 @media (max-width: 768px) {
+    
+    /* 1. SHRINKING THE BANNER */
+    .page-banner {
+        padding-left: 20px !important; /* Overrides the 50px desktop padding */
+        padding-top: 20px !important;
+        min-height: auto; 
+    }
+
+    /* Override Bootstrap's px-5 and py-5 on mobile */
+    .page-banner .container-fluid {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    /* Shrink the headings and text inside the banner */
+    .page-banner h2 {
+        font-size: 1.6rem; 
+    }
+    .page-banner h4 {
+        font-size: 1.2rem;
+    }
+    .page-banner p, 
+    .page-banner ul {
+        font-size: 0.95rem;
+    }
+
+    /* Fix the divider line between the two columns */
+    /* Currently, it is a vertical border on the left */
+    .page-banner .col-md-7 {
+        border-left: none; /* Removes the vertical line on mobile */
+        border-top: 2px solid #7e7b7b; /* Changes it to a horizontal line */
+        padding-top: 20px;
+        margin-top: 15px;
+    }
+
+    /* 2. SHRINKING THE NAVBAR DROPDOWNS */
+    .navbar-custom .navbar-collapse .dropdown-menu {
+        margin-top: 0; /* Removes the 19px gap from desktop */
+        padding: 5px;  /* Shrinks the overall dropdown box */
+    }
+
+    .navbar-custom .navbar-collapse .dropdown-menu .dropdown-item {
+        padding: 8px 15px; /* Reduces the height and width of the hover boxes */
+        font-size: 0.95rem; /* Slightly shrinks the text */
+    }
+
     .purpose-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* ADD THIS NEW RULE TO SCALE THE IMAGES */
+    .purpose-card img {
+        height: auto; /* Removes the rigid 250px lock */
+        aspect-ratio: 16 / 9; /* Automatically scales the height to match a widescreen ratio */
+    }
+}
+
+@media (max-width: 400px) {
+    
+    /* 1. COMPACT SIGN-UP WIDGET */
+    .signup-window {
+        margin: 20px 10px; /* Reduces outer margin so it fits on screen */
+        padding: 20px 15px; /* Shrinks the inner spacing */
+    }
+    
+    /* Stack the input and button vertically so they don't squish */
+    .signup-form {
+        flex-direction: column; 
+    }
+    
+    .signup-form button {
+        width: 100%; /* Makes the button full width for easy tapping */
+    }
+
+    /* 2. SHRINK BANNER TEXT FURTHER */
+    .page-banner h2 {
+        font-size: 1.35rem; /* Dials back the main headline */
+    }
+    
+    .page-banner h4 {
+        font-size: 1.1rem;
+    }
+
+    /* 3. TIGHTEN PURPOSE CARDS */
+    .purpose-card h4 {
+        font-size: 1rem;
+        padding: 12px 15px; /* Reduces the tap target height slightly */
+    }
+    
+    .purpose-details {
+        font-size: 0.85rem;
     }
 }
