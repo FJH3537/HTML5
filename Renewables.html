@@ -10,93 +10,10 @@
         <!--Link to Font Awesome, a free icon provider-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="global.css">
+        <link rel="stylesheet" href="Renewables.css">
 
         <link rel="icon" type="image/png" href="images/leaf.png">
-        <style>
-            body {
-                background-color: #f8f9fa;
-                background-image: radial-gradient(rgba(45, 106, 79, 0.3) 1.5px, transparent 1.5px);
-                background-size: 20px 20px;
-            }
-
-            .chart-window{
-                max-width: 1200px;
-                margin: 0 auto;
-                margin-top: 40px;
-                margin-bottom: 40px;
-
-                background-color: #ffffff;
-                border-radius: 12px;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-
-            .chart-window iframe{
-                width: 100%;
-                height: 600px;
-                border: none;
-                display: block; /*Removes default gap*/
-            }
-
-            .page-banner{
-                background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), var(--banner-img); /*allows assignning of variable when called*/
-                background-size: cover; /*Forces image to fill space without strecthing*/
-                background-position: var(--banner-position, center);
-                background-repeat: no-repeat;
-
-                height: 250px;
-                width: 100%;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: left;
-                align-items: flex-start;
-                padding-left: 50px;
-                padding-top: 50px;
-
-                color: #ffffff;
-                text-align: left;
-            }
-
-            .page-banner p{
-                font-size: 1.2rem;
-            }
-
-            .learn-more-box {
-                display: block;
-                text-align: center;
-                padding: 14px;
-                background-color: #b0b1b1;
-                border-bottom: 1px solid #e5e5e5;
-                text-decoration: none;
-                color: #14213d;
-                font-weight: 600;
-                font-size: 1.1rem;
-                transition: background-color 0.2s, color 0.2s;
-            }
-
-            .learn-more-box:hover {
-                background-color: #00c375;
-                color: #ffffff;
-            }
-
-            .chart-window:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            }
-
-            .section-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-                color: #00c375;
-            }
-
-            @media (max-width: 768px) {
-                .chart-window iframe {
-                    height: 400px;
-                }
-            }
-        </style>
+        
 
 
     </head>
@@ -106,7 +23,7 @@
         <main>
             <!--Renewable in shares of primary energy -->
         <section class ="page-banner" style ="--banner-img: url('images/growth.jpg');">
-            <h2>Statistical Proof of the advancements and adoption of renewable energy can show us that <br><em>CHANGE IS POSSIBLE</em></h2>
+            <h2>Statistical Proof show us that <em>CHANGE IS POSSIBLE</em></h2>
             <p>Explore how renewable sources are reshaping the global energy mix, country by country.</p>
         </section> 
             <div class ="chart-window">

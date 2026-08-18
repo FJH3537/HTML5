@@ -20,10 +20,26 @@
     text-align: left;
 }
 
+.page-banner h1{
+    max-width: 780px;
+    margin: 0 auto 18px auto; 
+    font-size: clamp(1.5rem, 3.5vw, 2rem); 
+    font-weight: 900;
+    line-height: 0.98;
+}
 .page-content {
     align-content: center;
 }
 
+.page-content h1 {
+    max-width: 780px;
+    margin: 0 auto 18px auto; 
+    font-size: clamp(1.5rem, 3.5vw, 2rem); 
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -1.5px; 
+    color: #14213d;
+}
 
 .signup-window {
     max-width: 600px;
@@ -126,7 +142,7 @@
 .news-ticker-content {
     display: inline-flex;
     white-space: nowrap;
-    animation: ticker-scroll 60s linear infinite;
+    animation: ticker-scroll 100s linear infinite;
      /* starts off-screen right */
     padding-left: 100%;
 }

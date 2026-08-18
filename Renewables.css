@@ -1,0 +1,128 @@
+body {
+    background-color: #f8f9fa;
+    background-image: radial-gradient(rgba(45, 106, 79, 0.3) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+}
+
+.chart-window{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.chart-window iframe{
+    width: 100%;
+    height: 600px;
+    border: none;
+    display: block; /*Removes default gap*/
+}
+
+.page-banner{
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.8)), var(--banner-img); /*allows assignning of variable when called*/
+    background-size: cover; /*Forces image to fill space without strecthing*/
+    background-position: var(--banner-position, center);
+    background-repeat: no-repeat;
+
+    height: 250px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    
+
+    align-items: flex-start; 
+    padding-top: 40px;
+    padding-bottom: 40px; 
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 5px solid #fbbc04;
+
+
+    color: #ffffff;
+    text-align: left;
+}
+
+.page-banner p{
+    font-size: 1.2rem;
+}
+
+.page-banner h2 {
+    max-width: 780px;
+    margin-bottom: 12px; 
+    
+    font-size: clamp(1.5rem, 3.5vw, 2rem); 
+    font-weight: 900;
+    line-height: 0.98;
+    letter-spacing: -1.5px;
+}
+
+.learn-more-box {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    background-color: #b0b1b1;
+    border-bottom: 1px solid #e5e5e5;
+    text-decoration: none;
+    color: #14213d;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.learn-more-box:hover {
+    background-color: #00c375;
+    color: #ffffff;
+}
+
+.chart-window:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.section-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #00c375;
+}
+
+@media (max-width: 768px) {
+    .chart-window iframe {
+        height: 400px;
+    }
+
+    .page-banner {
+        /* Overrides the 50px desktop padding */
+        padding-left: 20px !important; 
+        padding-top: 30px !important;
+        padding-right: 20px !important;
+        padding-bottom: 30px !important;
+        
+        /* Overrides the 250px rigid height so text doesn't overflow */
+        height: auto !important; 
+    }
+
+    /* 2. SHRINK THE PARAGRAPH TEXT */
+    .page-banner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .page-banner {
+        /* Pulls the padding in even tighter for tiny phones */
+        padding: 20px 15px !important; 
+    }
+    
+    /* Slightly shrinks the icons on tiny screens */
+    .section-icon {
+        font-size: 1.5rem; 
+        margin-bottom: 8px;
+    }
+}
