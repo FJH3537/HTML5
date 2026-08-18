@@ -82,36 +82,19 @@
     border-radius: 30px;
 }
 
-.email-icon i {
-    font-size: 1.5rem;   
-    color: #ffffff;      
-    transition: 0.2s;    
-}
-
-.email-icon i:hover {
-    color: #E1306C;     
-}
-
-.fb-icon i {
-    font-size: 1.5rem;   
-    color: #ffffff;      
-    transition: 0.2s;    
-}
-
-.fb-icon i:hover {
-    color: #E1306C;     
-}
-
+.email-icon i,
+.fb-icon i,
 .ig-icon i {
     font-size: 1.5rem;   
     color: #ffffff;      
     transition: 0.2s;    
 }
 
+.email-icon i:hover,
+.fb-icon i:hover,
 .ig-icon i:hover {
     color: #E1306C;     
 }
-
 
 /*Footer*/
 /* Top Yellow CTA Section */
@@ -130,7 +113,7 @@
     font-size: 1.1rem;
 }
 .btn-donate {
-    background-color: #d93025; /* Red button */
+    background-color: #d93025; 
     color: #ffffff;
     font-weight: bold;
     padding: 12px 30px;

@@ -3,42 +3,329 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Renewable Energy Adoption</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore practical sustainable innovations for cleaner energy, smarter resource use and greener communities.">
+    <title>Sustainable Innovations | Green Tech Club</title>
 
-    <!--Link to Bootstrap framework
-        Gives access to pre-written CSS classes-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--Link to Font Awesome, a free icon provider-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="global.css">
+    <link rel="icon" type="image/png" href="images/leaf.png">
+
+    <link rel="stylesheet" href="sustainable-technology.css">
 </head>
 
 <body>
     <div id="nav-placeholder"></div>
 
-    <div class="container mt-5 text-center">
-        <h1>Welcome to Sustainable Technology</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <p class="lead">Promoting environmental sustainability through innovation.</p>
+    <main>
+        <section class="innovation-hero">
+            <div class="container py-5">
+                <span class="eyebrow"><i class="fa-solid fa-lightbulb"></i> Ideas into impact</span>
+                <h1>Sustainable innovations that solve real problems.</h1>
+                <p class="lead">Discover how cleaner energy, circular design, smart agriculture and water-saving systems can improve campuses and communities.</p>
+                <a class="hero-action" href="#innovation-gallery">Explore the solutions <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+        </section>
 
+        <section class="priority-strip" aria-label="Innovation priorities">
+            <div class="container">
+                <div class="priority-panel row g-0">
+                    <div class="col-sm-6 col-lg-3 priority-item">
+                        <strong><i class="fa-solid fa-bolt"></i> Clean energy</strong>
+                        <span>Generate and store power with lower environmental impact.</span>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 priority-item">
+                        <strong><i class="fa-solid fa-arrows-rotate"></i> Circular resources</strong>
+                        <span>Keep materials in use and reduce unnecessary waste.</span>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 priority-item">
+                        <strong><i class="fa-solid fa-droplet"></i> Water resilience</strong>
+                        <span>Monitor, collect and reuse water more efficiently.</span>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 priority-item">
+                        <strong><i class="fa-solid fa-seedling"></i> Smarter food</strong>
+                        <span>Grow more with precise use of land, water and energy.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5" id="innovation-gallery">
+            <div class="container py-lg-4">
+                <div class="section-heading">
+                    <span class="kicker">Solution library</span>
+                    <h2>Explore practical green technologies</h2>
+                    <p>Use the filters to focus on a type of solution. Each card explains what the innovation does, where it can be applied and the challenge that must be considered.</p>
+                </div>
+
+                <div class="filter-bar" role="group" aria-label="Filter innovation cards">
+                    <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All solutions</button>
+                    <button class="filter-btn" type="button" data-filter="energy" aria-pressed="false">Clean energy</button>
+                    <button class="filter-btn" type="button" data-filter="resources" aria-pressed="false">Resources</button>
+                    <button class="filter-btn" type="button" data-filter="agriculture" aria-pressed="false">Agriculture</button>
+                    <button class="filter-btn" type="button" data-filter="built" aria-pressed="false">Built environment</button>
+                    <button class="filter-btn saved-filter-btn" type="button" data-filter="saved" aria-pressed="false"><i class="fa-solid fa-bookmark me-1"></i> Saved innovations <span class="saved-count" aria-hidden="true">0</span></button>
+                </div>
+
+                <p class="text-center text-muted small mb-4" id="filter-status" aria-live="polite">Showing all 6 innovations</p>
+
+                <div class="row g-4" id="innovation-grid">
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-solar" data-category="energy" data-innovation="solar">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="solar" aria-label="Save Solar microgrids" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/Solar.jpg" alt="Rows of solar photovoltaic panels" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Clean energy</span>
+                                <h3>Solar microgrids</h3>
+                                <p class="card-summary">Local solar panels, batteries and controls work together to keep essential spaces powered efficiently.</p>
+                                <p class="best-for"><strong>Best for:</strong> Managing a local electricity network and maintaining essential power.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> High initial investment and ongoing battery maintenance.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="solar">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-storage" data-category="energy" data-innovation="storage">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="storage" aria-label="Save Smart energy storage" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/smart-energy-storage.webp" alt="Battery energy storage cabinets connected to solar panels" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Clean energy</span>
+                                <h3>Smart energy storage</h3>
+                                <p class="card-summary">Digital controls store renewable electricity when supply is high and release it when demand increases.</p>
+                                <p class="best-for"><strong>Best for:</strong> Saving electricity for later and reducing peak demand.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> Battery cost, ageing, temperature control and end-of-life handling.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="storage">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-water" data-category="resources" data-innovation="water">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="water" aria-label="Save Smart water monitoring" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/smart-water-monitoring.webp" alt="Hands collecting clean running water" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Resources</span>
+                                <h3>Smart water monitoring</h3>
+                                <p class="card-summary">Connected meters and leak sensors reveal unusual water use before a small problem becomes major waste.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> Sensors require correct placement, calibration and maintenance.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="water">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-digestion" data-category="resources" data-innovation="digestion">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="digestion" aria-label="Save Food-waste anaerobic digestion" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/food-waste-anaerobic-digestion.webp" alt="Food-waste anaerobic digestion tanks and biogas infrastructure" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Resources</span>
+                                <h3>Food-waste anaerobic digestion</h3>
+                                <p class="card-summary">A sealed digester uses microorganisms to turn separated food waste into biogas and nutrient-rich digestate.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> Feedstock contamination and process conditions must be controlled.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="digestion">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-greenhouse" data-category="agriculture" data-innovation="greenhouse">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="greenhouse" aria-label="Save Precision greenhouses" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/precision-greenhouse.webp" alt="Greenhouse equipped for controlled smart agriculture" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Agriculture</span>
+                                <h3>Precision greenhouses</h3>
+                                <p class="card-summary">Sensors adjust watering, temperature and light so plants receive what they need with fewer resources.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> Equipment and energy use can be costly without careful management.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="greenhouse">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 innovation-item" id="innovation-nature" data-category="built" data-innovation="nature">
+                        <article class="innovation-card">
+                            <button class="save-innovation-btn" type="button" data-innovation="nature" aria-label="Save Nature-based design" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+                            <img src="images/green-infrastructure.webp" alt="Green roof and rain garden beside a shaded urban walkway" loading="lazy">
+                            <div class="card-content">
+                                <span class="innovation-tag">Green infrastructure</span>
+                                <h3>Nature-based design</h3>
+                                <p class="card-summary">Green roofs, shade trees and rain gardens cool built areas while supporting biodiversity and drainage.</p>
+                                <p class="innovation-challenge"><i class="fa-solid fa-triangle-exclamation me-1"></i><strong>Challenge:</strong> Plant selection and long-term upkeep must suit the site.</p>
+                                <button class="details-btn" type="button" data-bs-toggle="modal" data-bs-target="#innovationModal" data-innovation="nature">How it works <i class="fa-solid fa-arrow-right ms-1"></i></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="match-section py-5">
+            <div class="container py-lg-4">
+                <div class="row align-items-end mb-4">
+                    <div class="col-lg-8">
+                        <span class="eyebrow mb-3"><i class="fa-solid fa-wand-magic-sparkles"></i> Innovation matcher</span>
+                        <h2 class="display-6 fw-bold">Start with the problem, then choose the technology.</h2>
+                    </div>
+                    <div class="col-lg-4">
+                        <p class="text-white-50 mb-0">Select a campus challenge to see a practical starting point.</p>
+                    </div>
+                </div>
+
+                <div class="match-panel row g-0">
+                    <div class="col-lg-5 match-controls">
+                        <label class="form-label fw-bold" for="challenge-select">What needs improvement?</label>
+                        <select class="form-select form-select-lg" id="challenge-select">
+                            <option value="energy">High electricity demand</option>
+                            <option value="storage">Renewable electricity is available at the wrong time</option>
+                            <option value="water">Unexpected water use</option>
+                            <option value="waste">Too much food waste</option>
+                            <option value="food">Inefficient campus gardening</option>
+                            <option value="heat">Hot outdoor spaces</option>
+                        </select>
+                        <p class="small text-white-50 mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i> This tool suggests a concept for further investigation, not a final engineering design.</p>
+                    </div>
+                    <div class="col-lg-7 match-result" aria-live="polite">
+                        <div class="result-icon"><i id="match-icon" class="fa-solid fa-solar-panel"></i></div>
+                        <p class="small text-uppercase fw-bold text-success mb-1">Suggested starting point</p>
+                        <h3 id="match-title">Solar microgrid pilot</h3>
+                        <p id="match-description" class="mb-2">Measure one building's daily demand, then size a small solar and battery demonstration around its essential loads.</p>
+                        <p id="match-action" class="small text-muted mb-3"><strong>First action:</strong> Review three months of electricity bills and identify peak-use periods.</p>
+                        <button class="btn matcher-view-btn" id="view-innovation-btn" type="button">
+                            View this innovation <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container py-lg-4">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-5">
+                        <span class="kicker text-uppercase fw-bold text-success">From concept to project</span>
+                        <h2 class="display-6 fw-bold mt-2 pathway-title">A simple innovation pathway</h2>
+                        <p class="text-muted">Good green technology begins with a clearly defined need and improves through testing, evidence and feedback.</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="pathway ms-3">
+                            <div class="pathway-step" data-step="1">
+                                <h3>Observe the problem</h3>
+                                <p class="mb-0">Identify who is affected, where it happens and what resource is being wasted.</p>
+                            </div>
+                            <div class="pathway-step" data-step="2">
+                                <h3>Build a small pilot</h3>
+                                <p class="mb-0">Test one measurable solution before expanding it across the campus.</p>
+                            </div>
+                            <div class="pathway-step" data-step="3">
+                                <h3>Measure and improve</h3>
+                                <p class="mb-0">Compare results, collect user feedback and refine the design before scaling up.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="source-section py-5" aria-labelledby="sources-title">
+            <div class="container">
+                <div class="section-heading mb-4">
+                    <span class="kicker">Acknowledgements</span>
+                    <h2 id="sources-title">Technology-information sources</h2>
+                    <p>Government and recognised-agency resources support the technology explanations on this page.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="source-card h-100">
+                            <h3>Technology-information sources</h3>
+                            <ul class="source-list mb-0">
+                                <li><a href="https://www.energy.gov/cmei/systems/solar-integration-distributed-energy-resources-and-microgrids-basics" target="_blank" rel="noopener noreferrer">US Department of Energy — Microgrids Basics</a></li>
+                                <li><a href="https://www.energy.gov/cmei/systems/solar-integration-solar-energy-and-storage-basics" target="_blank" rel="noopener noreferrer">US Department of Energy — Solar and Storage Basics</a></li>
+                                <li><a href="https://www.seda.gov.my/reportal/fit/eligible-renewable-resources/solar-photovoltaic/" target="_blank" rel="noopener noreferrer">SEDA Malaysia — Solar Photovoltaic</a></li>
+                                <li><a href="https://www.epa.gov/watersense/leak-detection-and-flow-monitoring-devices" target="_blank" rel="noopener noreferrer">US EPA — Leak Detection and Flow Monitoring</a></li>
+                                <li><a href="https://www.epa.gov/agstar/how-does-anaerobic-digestion-work" target="_blank" rel="noopener noreferrer">US EPA — How Anaerobic Digestion Works</a></li>
+                                <li><a href="https://training-portal.nifa.usda.gov/web/crisprojectpages/7003352-controlled-environment-technology-and-use.html" target="_blank" rel="noopener noreferrer">USDA NIFA — Controlled Environment Technology</a></li>
+                                <li><a href="https://www.epa.gov/green-infrastructure/types-green-infrastructure" target="_blank" rel="noopener noreferrer">US EPA — Types of Green Infrastructure</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5" aria-labelledby="connected-learning-title">
+            <div class="container">
+                <div class="connected-links p-4 p-lg-5">
+                    <div>
+                        <p class="text-uppercase fw-bold text-success small mb-1">Connected learning</p>
+                        <h2 class="h3 mb-2" id="connected-learning-title">Continue exploring the green technology system</h2>
+                        <p class="text-muted mb-4">See how individual innovations work together at city scale, then examine the numerical evidence behind different energy sources.</p>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-lg-6">
+                            <a class="btn btn-lg w-100 h-100 d-flex align-items-center justify-content-center" href="Smart-cities.html">
+                                See How These Technologies Create Smart Cities <i class="fa-solid fa-city ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a class="btn btn-lg w-100 h-100 d-flex align-items-center justify-content-center" href="Renewables.html">
+                                View Renewable Energy Statistics <i class="fa-solid fa-chart-column ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="innovationModal" tabindex="-1" aria-labelledby="innovationModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-4" id="innovationModalTitle">Innovation details</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="result-icon modal-result-icon mb-3"><i id="modal-icon" class="fa-solid fa-lightbulb"></i></div>
+                    <h3 class="modal-section-title">How it works</h3>
+                    <ol class="modal-steps mb-4" id="modal-steps"></ol>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="modal-meta">
+                                <h3 class="modal-section-title"><i class="fa-solid fa-circle-check me-1"></i> Main benefit</h3>
+                                <p class="mb-0" id="modal-benefit"></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="modal-meta">
+                                <h3 class="modal-section-title"><i class="fa-solid fa-triangle-exclamation me-1"></i> Limitation / challenge</h3>
+                                <p class="mb-0" id="modal-limitation"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <h3 class="modal-section-title mb-1"><i class="fa-solid fa-school me-1"></i> Possible campus application</h3>
+                        <p class="mb-0" id="modal-application"></p>
+                    </div>
+
+                    <div class="pt-2 border-top">
+                        <h3 class="modal-section-title mt-3">Official explanation</h3>
+                        <div class="official-links" id="modal-sources"></div>
+                        <p class="small text-muted mb-0">External sources open in a new tab so you can continue exploring this Green Tech Club page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="footer-placeholder"></div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
-    <!-- 2. Load Bootstrap Library Second -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="global.js"></script>
+    <script src="sustainable-technology.js"></script>
 </body>
 
 </html>

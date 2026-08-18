@@ -3,42 +3,336 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Renewable Energy Adoption</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore how live environmental data and connected infrastructure support smarter, greener Malaysian cities.">
+    <title>Smart Cities | Green Tech Club</title>
 
-    <!--Link to Bootstrap framework
-        Gives access to pre-written CSS classes-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--Link to Font Awesome, a free icon provider-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="global.css">
+    <link rel="icon" type="image/png" href="images/leaf.png">
+
+    <link rel="stylesheet" href="smart-cities.css">
 </head>
 
 <body>
     <div id="nav-placeholder"></div>
 
-    <div class="container mt-5 text-center">
-        <h1>Welcome to Smart Cities</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <h1>1</h1>
-        <p class="lead">Promoting environmental sustainability through innovation.</p>
+    <main>
+        <section class="city-hero">
+            <div class="container py-5">
+                <span class="eyebrow"><i class="fa-solid fa-tower-broadcast"></i> Data-led urban solutions</span>
+                <h1>Smart Cities Across Malaysia</h1>
+                <p class="lead">Explore how environmental data, connected infrastructure and green technology can help Malaysian cities become cleaner, more efficient and more sustainable.</p>
+                <a class="hero-link" href="#live-dashboard">View live city data <i class="fa-solid fa-arrow-down"></i></a>
+            </div>
+        </section>
 
-    </div>
+        <section class="smart-intro py-5" aria-labelledby="smart-city-intro-title">
+            <div class="container py-lg-3">
+                <div class="section-heading">
+                    <span class="kicker">Understanding smart cities</span>
+                    <h2 id="smart-city-intro-title">What Makes a City Smart?</h2>
+                    <p>A smart city uses connected technology and environmental data to improve public services, reduce resource consumption and support a better quality of life.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="concept-card">
+                            <div class="concept-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                            <h3 class="h4">Connected</h3>
+                            <p class="mb-0">Sensors collect real-time information.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="concept-card">
+                            <div class="concept-icon"><i class="fa-solid fa-leaf"></i></div>
+                            <h3 class="h4">Sustainable</h3>
+                            <p class="mb-0">Technology reduces energy, pollution and waste.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="concept-card">
+                            <div class="concept-icon"><i class="fa-solid fa-people-group"></i></div>
+                            <h3 class="h4">People-centred</h3>
+                            <p class="mb-0">Better services improve quality of life.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-wrap" id="live-dashboard" aria-labelledby="dashboard-title">
+            <div class="container px-0 px-md-3">
+                <div class="dashboard-shell">
+                    <div class="dashboard-header d-md-flex align-items-center justify-content-between gap-3">
+                        <div>
+                            <p class="small text-uppercase fw-bold text-white-50 mb-1">Malaysia city monitor</p>
+                            <h2 class="h3 mb-0" id="dashboard-title">Live environmental conditions</h2>
+                        </div>
+                        <span class="live-chip status-connecting mt-3 mt-md-0" id="api-status" role="status">
+                            <span class="live-dot"></span><span id="api-status-text">Connecting…</span>
+                        </span>
+                    </div>
+
+                    <div class="dashboard-controls">
+                        <p class="dashboard-help"><i class="fa-solid fa-circle-info me-2 text-success"></i>Select a Malaysian city to view its current environmental conditions. Your selected city will be remembered during this browsing session.</p>
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-8">
+                                <label class="form-label fw-bold" for="city-select">Choose a city</label>
+                                <select class="form-select" id="city-select">
+                                    <option value="kuala-lumpur">Kuala Lumpur</option>
+                                    <option value="george-town">George Town, Penang</option>
+                                    <option value="johor-bahru">Johor Bahru</option>
+                                    <option value="kuching">Kuching</option>
+                                    <option value="kota-kinabalu">Kota Kinabalu</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-grid">
+                                <button class="btn btn-refresh" id="refresh-data" type="button"><i class="fa-solid fa-rotate me-2"></i>Refresh live data</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="loading-panel" id="loading-panel" role="status">
+                        <i class="fa-solid fa-circle-notch fa-spin"></i>
+                        <p class="mb-0 fw-bold">Loading environmental data…</p>
+                    </div>
+
+                    <div class="error-panel d-none" id="error-panel" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <h3 class="h5 fw-bold">Live data is temporarily unavailable</h3>
+                        <p class="text-muted">Check your internet connection and try again. The rest of the page can still be explored.</p>
+                        <button class="btn btn-outline-success" id="retry-data" type="button">Try again</button>
+                    </div>
+
+                    <div class="metric-grid d-none" id="metric-grid" aria-live="polite">
+                        <div class="row g-3">
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-temperature-half"></i></div>
+                                    <span class="metric-label">Temperature</span>
+                                    <span class="metric-value" id="temperature-value">--</span>
+                                    <span class="metric-note" id="weather-note">Current conditions</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-droplet"></i></div>
+                                    <span class="metric-label">Humidity</span>
+                                    <span class="metric-value" id="humidity-value">--</span>
+                                    <span class="metric-note">Relative humidity</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-wind"></i></div>
+                                    <span class="metric-label">Wind speed</span>
+                                    <span class="metric-value" id="wind-value">--</span>
+                                    <span class="metric-note">At 10 metres</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-sun"></i></div>
+                                    <span class="metric-label">Solar radiation</span>
+                                    <span class="metric-value" id="solar-value">--</span>
+                                    <span class="metric-note">Shortwave radiation</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-lungs"></i></div>
+                                    <span class="metric-label">Air Quality Index</span>
+                                    <span class="metric-value" id="aqi-value">--</span>
+                                    <span class="aqi-badge aqi-unavailable" id="aqi-badge">Data unavailable</span>
+                                    <span class="metric-note" id="aqi-note">Based on the European AQI scale</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="metric-card">
+                                    <div class="metric-icon"><i class="fa-solid fa-smog"></i></div>
+                                    <span class="metric-label">PM2.5</span>
+                                    <span class="metric-value" id="pm-value">--</span>
+                                    <span class="metric-note">Fine particles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-footer d-flex flex-column flex-md-row justify-content-between gap-2">
+                        <span id="updated-time">Last updated: Waiting for live data</span>
+                        <span>Weather and air-quality model data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container py-lg-4">
+                <div class="section-heading">
+                    <span class="kicker">Read the signals</span>
+                    <h2>What could this city prioritise?</h2>
+                    <p>The recommendation below changes with the selected city's live conditions, showing how data can guide a practical response.</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <article class="insight-card d-md-flex gap-4 align-items-start" aria-live="polite">
+                            <div class="insight-icon flex-shrink-0"><i id="insight-icon" class="fa-solid fa-chart-line"></i></div>
+                            <div>
+                                <p class="small text-uppercase fw-bold text-primary mb-1" id="insight-location">Kuala Lumpur insight</p>
+                                <h3 class="h3" id="insight-title">Waiting for live data</h3>
+                                <p class="mb-0" id="insight-copy">The dashboard will suggest a priority after the latest conditions are received.</p>
+                                <p class="insight-reason mb-0" id="insight-reason"><strong>Why this recommendation?</strong> The explanation will appear after the live values are received.</p>
+                                <button class="btn insight-action d-none" id="explore-system-btn" type="button" data-system="mobility">Explore the Mobility System <i class="fa-solid fa-arrow-down ms-2"></i></button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="system-section py-5" id="smart-city-systems">
+            <div class="container py-lg-4">
+                <div class="section-heading">
+                    <span class="kicker">One city, connected systems</span>
+                    <h2>Explore Smart-City Systems</h2>
+                    <p>A smart city is not a single device. It combines people, sensors, public services and responsible decision-making.</p>
+                </div>
+
+                <div class="system-nav" role="group" aria-label="Choose a smart city system">
+                    <button class="system-btn active" type="button" data-system="energy" aria-pressed="true"><i class="fa-solid fa-bolt me-2"></i>Energy</button>
+                    <button class="system-btn" type="button" data-system="mobility" aria-pressed="false"><i class="fa-solid fa-bus-simple me-2"></i>Mobility</button>
+                    <button class="system-btn" type="button" data-system="air" aria-pressed="false"><i class="fa-solid fa-wind me-2"></i>Air</button>
+                    <button class="system-btn" type="button" data-system="waste" aria-pressed="false"><i class="fa-solid fa-recycle me-2"></i>Waste</button>
+                    <button class="system-btn" type="button" data-system="water" aria-pressed="false"><i class="fa-solid fa-faucet-drip me-2"></i>Water</button>
+                    <button class="system-btn" type="button" data-system="lighting" aria-pressed="false"><i class="fa-solid fa-lightbulb me-2"></i>Lighting</button>
+                </div>
+
+                <div class="system-display row g-0" aria-live="polite">
+                    <div class="col-lg-4 system-visual">
+                        <i id="system-icon" class="fa-solid fa-building-circle-check"></i>
+                    </div>
+                    <div class="col-lg-8 system-copy">
+                        <p class="small text-uppercase fw-bold text-success mb-1" id="system-kicker">Efficient infrastructure</p>
+                        <h3 class="display-6" id="system-title">Smart energy management</h3>
+                        <p id="system-description">Meters and building controls reveal when electricity is used, helping facility teams reduce waste and shift demand away from peak periods.</p>
+                        <div class="system-process" aria-label="How the selected smart-city system works">
+                            <div class="process-step">
+                                <span class="process-label">Data collected</span>
+                                <p id="system-data">Smart meters record electricity demand across buildings and public infrastructure.</p>
+                            </div>
+                            <div class="process-step">
+                                <span class="process-label">City response</span>
+                                <p id="system-response">Building controls adjust lighting, cooling and battery use according to current demand.</p>
+                            </div>
+                            <div class="process-step">
+                                <span class="process-label">Expected result</span>
+                                <p id="system-result">The city uses energy more efficiently and reduces unnecessary peak demand.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="impact-section py-5" aria-labelledby="impact-title">
+            <div class="container py-lg-4">
+                <div class="section-heading">
+                    <span class="kicker">Balanced development</span>
+                    <h2 id="impact-title">Benefits and challenges</h2>
+                    <p>Smart-city projects can improve urban life, but cities must plan for cost, maintenance, privacy and equal access.</p>
+                </div>
+                <div class="impact-table-wrap table-responsive">
+                    <table class="table impact-table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col"><i class="fa-solid fa-circle-check me-2"></i>Benefits</th>
+                                <th scope="col"><i class="fa-solid fa-triangle-exclamation me-2"></i>Challenges</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fa-solid fa-bolt"></i>More efficient energy use</td>
+                                <td><i class="fa-solid fa-coins"></i>High initial implementation cost</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-bus-simple"></i>Lower transport emissions</td>
+                                <td><i class="fa-solid fa-screwdriver-wrench"></i>Ongoing maintenance and technical skills</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-chart-line"></i>Faster detection of environmental problems</td>
+                                <td><i class="fa-solid fa-shield-halved"></i>Privacy and cybersecurity risks</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa-solid fa-people-roof"></i>Faster, data-informed public services</td>
+                                <td><i class="fa-solid fa-universal-access"></i>Unequal digital access</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="section-heading mb-4">
+                    <span class="kicker">Connect the pages</span>
+                    <h2>Continue Exploring Green Technology</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <article class="connection-card p-4 h-100">
+                            <i class="fa-solid fa-lightbulb mb-3"></i>
+                            <h3 class="h4">Explore sustainable solutions</h3>
+                            <p>See the technologies that can support smarter buildings, cleaner energy and stronger resource management.</p>
+                            <a href="Sustainable-Technology.html">Explore Innovations <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article class="connection-card p-4 h-100">
+                            <i class="fa-solid fa-solar-panel mb-3"></i>
+                            <h3 class="h4">Compare energy sources</h3>
+                            <p>Examine how renewable and non-renewable energy differ in availability, impact and long-term sustainability.</p>
+                            <a href="Renewables.html">Compare Energy Sources <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sources-section py-4" aria-labelledby="sources-title">
+            <div class="container">
+                <h2 class="h6 text-uppercase fw-bold mb-3" id="sources-title">Sources and attribution</h2>
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="source-group">
+                            <h3 class="h6"><i class="fa-solid fa-satellite-dish me-2 text-success"></i>Live data</h3>
+                            <ul class="source-list small">
+                                <li><a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener noreferrer">Open-Meteo Weather API</a></li>
+                                <li><a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener noreferrer">Open-Meteo Air Quality API</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="source-group">
+                            <h3 class="h6"><i class="fa-solid fa-book-open me-2 text-success"></i>Information and media</h3>
+                            <ul class="source-list small">
+                                <li><a href="https://www.kpkt.gov.my/index.php/pages/view/675" target="_blank" rel="noopener noreferrer">Malaysia Smart City Framework and Handbook</a></li>
+                                <li>Hero photo: <a href="https://commons.wikimedia.org/wiki/File:MRT_SSP_-_Kampung_Batu_station.jpg" target="_blank" rel="noopener noreferrer">Renek78 / Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
-    <!-- 2. Load Bootstrap Library Second -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="global.js"></script>
+    <script src="smart-cities.js"></script>
 </body>
 
 </html>
