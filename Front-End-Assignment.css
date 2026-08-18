@@ -126,7 +126,7 @@
 .news-ticker-content {
     display: inline-flex;
     white-space: nowrap;
-    animation: ticker-scroll 100s linear infinite;
+    animation: ticker-scroll 60s linear infinite;
      /* starts off-screen right */
     padding-left: 100%;
 }
@@ -242,21 +242,4 @@
     .purpose-grid {
         grid-template-columns: 1fr;
     }
-
-    .page-banner {
-        min-height: 300px; 
-        padding: 30px 24px;
-    }
-
-    .page-banner .row {
-        height: auto;
-    }
-
-    .page-banner .col-md-7 {
-        border-left: none;      
-        border-top: 2px solid #7e7b7b;
-        padding-top: 20px;
-        margin-top: 20px;
-    }
 }
-
