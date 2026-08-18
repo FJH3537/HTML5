@@ -296,6 +296,21 @@
         height: auto; /* Removes the rigid 250px lock */
         aspect-ratio: 16 / 9; /* Automatically scales the height to match a widescreen ratio */
     }
+
+    .news-ticker {
+        padding: 10px 0;
+        font-size: 0.8rem;    
+    }
+
+    .news-ticker-label {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+        margin: 0 10px;
+    }
+
+    .news-item {
+        margin-right: 40px;   
+    }
 }
 
 @media (max-width: 400px) {
@@ -315,6 +330,22 @@
         width: 100%; /* Makes the button full width for easy tapping */
     }
 
+    .page-banner {
+        padding-left: 15px !important; 
+        padding-top: 15px !important;
+    }
+
+    .page-banner .container-fluid {
+        padding: 15px !important;
+    }
+
+    .page-banner .col-md-7 {
+        border-left: none !important; /* Removes the vertical line */
+        border-top: none !important; /* Ensures no horizontal line replaces it */
+        padding-top: 10px;
+        margin-top: 0;
+    }
+
     /* 2. SHRINK BANNER TEXT FURTHER */
     .page-banner h2 {
         font-size: 1.35rem; /* Dials back the main headline */
@@ -332,5 +363,14 @@
     
     .purpose-details {
         font-size: 0.85rem;
+    }
+
+    .news-ticker-label {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+
+    .news-ticker-label .label-text {/*Hide the logo if too small*/
+        display: none;
     }
 }
