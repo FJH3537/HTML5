@@ -19,7 +19,7 @@ body {
     color: #ffffff;
     background:
         linear-gradient(90deg, rgba(9, 30, 23, 0.92) 0%, rgba(9, 30, 23, 0.73) 52%, rgba(9, 30, 23, 0.22) 100%),
-        url("images/GreenTech.jpg") center/cover no-repeat;
+        url("../images/GreenTech.jpg") center/cover no-repeat;
 }
 
 .topic-label {

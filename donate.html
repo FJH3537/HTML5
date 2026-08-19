@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!--Link to Font Awesome, a free icon provider-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="global.css">
-    <link rel="stylesheet" href="donate.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/donate.css">
 
     <link rel="icon" type="image/png" href="images/leaf.png">
     
@@ -157,143 +157,11 @@
     <div id="footer-placeholder"></div>
 
     <!--The javascript for the event handling-->
-    <script>
-
-        //Element references
-
-        const donatebtn = document.querySelectorAll(".amount-grid .Donate-button");
-        const frequencybtn = document.querySelectorAll(".frequency-grid .Donate-button");
-        const custombox = document.querySelector(".custom-amount-box");
-        const customInput = document.querySelector("#custom-amount");
-
-        const paymentBtns = document.querySelectorAll(".payment-btn");
-        const qrPanel = document.getElementById("qr-panel");
-        const bankPanel = document.getElementById("bank-panel");
-
-        const bankSelectBtn = document.getElementById("bank-select-btn");
-        const bankDropdown = document.getElementById("bank-dropdown");
-        const bankSelectLabel = document.getElementById("bank-select-label");
-
-        const bankDonateBtn = document.getElementById("bank-donate-btn");
-        const bankDonateHint = document.getElementById("bank-donate-hint");
-
-
-        //Shared state
-        let selectedAmount = null;
-        let selectedBank = null;
-
-        function updateDonateButtonState() {
-            const ready = selectedBank && selectedAmount;
-            bankDonateBtn.disabled = !ready;
-            bankDonateHint.textContent = ready
-                ? `Ready to donate RM ${selectedAmount} via ${selectedBank.name}`
-                : "Select a bank and an amount to continue";
-        }
-
-        //Amount selection (grid buttons + custom input)
-        for (let i = 0; i < donatebtn.length; i++) {
-            donatebtn[i].onclick = function (e) {
-                for (let j = 0; j < donatebtn.length; j++) {
-                    donatebtn[j].classList.remove('active');
-                }
-                custombox.classList.remove('active');
-                e.target.classList.add('active');
-
-                selectedAmount = e.target.textContent.replace("RM ", "").trim();
-                updateDonateButtonState();
-            };
-        }
-
-        customInput.oninput = function () {
-            selectedAmount = customInput.value || null;
-            updateDonateButtonState();
-        };
-
-        customInput.onfocus = function () {
-            for (let j = 0; j < donatebtn.length; j++) {
-                donatebtn[j].classList.remove('active');
-            }
-            custombox.classList.add('active');
-        };
-
-       
-        //Frequency selection (Once / Monthly / Yearly)
-        for (let i = 0; i < frequencybtn.length; i++) {
-            frequencybtn[i].onclick = function (e) {
-                for (let j = 0; j < frequencybtn.length; j++) {
-                    frequencybtn[j].classList.remove('active');
-                }
-                e.target.classList.add('active');
-            };
-        }
-
-        //Payment method toggle (QR vs Bank Transfer)
-        for (let i = 0; i < paymentBtns.length; i++) {
-            paymentBtns[i].onclick = function (e) {
-                for (let j = 0; j < paymentBtns.length; j++) {
-                    paymentBtns[j].classList.remove("active");
-                }
-                e.currentTarget.classList.add("active");
-
-                const method = e.currentTarget.dataset.method;
-                qrPanel.hidden = method !== "qr";
-                bankPanel.hidden = method !== "bank";
-            };
-        }
-
-        //Bank selector dropdown 
-        bankSelectBtn.onclick = function (e) {
-            e.preventDefault(); // stops it acting like a form submit
-            const isOpen = !bankDropdown.hidden;
-            bankDropdown.hidden = isOpen;
-            bankSelectBtn.classList.toggle("open", !isOpen);
-        };
-
-        // Choosing a bank just records the choice — it does NOT redirect yet
-        // Navigation only happens when "Donate Now" is clicked 
-        document.querySelectorAll(".bank-option").forEach(option => {
-            option.addEventListener("click", (e) => {
-                e.preventDefault();
-
-                document.querySelectorAll(".bank-option").forEach(opt => {
-                    opt.classList.remove("selected");
-                });
-                option.classList.add("selected");
-
-                selectedBank = {
-                    name: option.textContent.trim(),
-                    url: option.href
-                };
-
-                bankSelectLabel.textContent = selectedBank.name;
-                bankDropdown.hidden = true;
-                bankSelectBtn.classList.remove("open");
-                updateDonateButtonState();
-            });
-        });
-
-        // Close the dropdown if the user clicks anywhere outside it
-        document.addEventListener("click", function (e) {
-            if (!e.target.closest(".bank-select-wrapper")) {
-                bankDropdown.hidden = true;
-                bankSelectBtn.classList.remove("open");
-            }
-        });
-
-        //Final confirmation — Donate Now button
-        bankDonateBtn.onclick = function () {
-            if (selectedBank && selectedAmount) {
-                window.open(selectedBank.url, "_blank", "noopener,noreferrer");
-            }
-        };
-    </script>
-
-
+    <script src="js/donate.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <!--Global Script-->
-    <script src="global.js"></script>
+    <script src="js/global.js"></script>
 </body>
 
 </html>

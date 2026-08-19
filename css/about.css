@@ -23,7 +23,7 @@ body {
     color: #ffffff;
     background:
         linear-gradient(90deg, rgba(10, 32, 25, 0.9) 0%, rgba(10, 32, 25, 0.7) 48%, rgba(10, 32, 25, 0.25) 100%),
-        url("images/green.jpg") center/cover no-repeat;
+        url("../images/green.jpg") center/cover no-repeat;
 }
 
 .section-kicker {
@@ -378,7 +378,7 @@ body {
 
 .join-image {
     min-height: 360px;
-    background: url("images/Sustainable_Future.jpg") center/cover no-repeat;
+    background: url("../images/Sustainable_Future.jpg") center/cover no-repeat;
 }
 
 .join-content {

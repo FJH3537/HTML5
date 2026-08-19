@@ -22,7 +22,7 @@ body {
     color: #ffffff;
     background:
         linear-gradient(90deg, rgba(0, 35, 62, 0.96) 0%, rgba(0, 64, 48, 0.86) 54%, rgba(0, 64, 48, 0.35) 100%),
-        url('images/Kuala-Lumpur-Smart-City.jpg') center 52% / cover no-repeat;
+        url('../images/Kuala-Lumpur-Smart-City.jpg') center 52% / cover no-repeat;
 }
 
 .city-hero::before {
