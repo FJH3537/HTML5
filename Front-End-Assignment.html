@@ -107,54 +107,73 @@
 
         <!--Insta Plugin-->
         <section class="engagement-section">
-        
-            <!-- Section Header -->
-            <div class="container text-center pb-4 position-relative z-1">
-                <h2 style="font-weight: 900; color: #14213d; font-size: 2.2rem;">Join the Community</h2>
-                <p style="color: #666666; font-size: 1.1rem;">Follow our daily updates or subscribe to our newsletter.</p>
-            </div>
+            <div class="container pb-5 pt-5">
 
-            <!-- 1. The Instagram Plugin (Centered, 400px) -->
-            <div class="social-plugin-section position-relative z-1">
-                <div class="plugin-text">
-                    <h4><i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Latest Updates</h4>
-                    <p>See what we are up to this week!</p>
+                <div class="container text-center pb-4 position-relative z-1">
+                    <h2 style="font-weight: 900; color: #14213d; font-size: 2.2rem;">Join the Community</h2>
+                    <p style="color: #666666; font-size: 1.1rem;">Follow our daily updates or subscribe to our newsletter.</p>
                 </div>
                 
-                <div class="instagram-wrapper" style="position: relative; min-height: 350px; display: flex; justify-content: center; align-items: center;">
-                    <div class="loading-spinner" style="position: absolute; z-index: 0; color: #7e7b7b; text-align: center;">
-                        <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
-                        <p class="mt-2" style="font-size: 0.85rem;">Loading post...</p>
+                <!-- Adds a flexbox row, centers the items, and adds a gap between them -->
+                <div class="row justify-content-center align-items-start gap-4">
+                    
+                    <!-- Left Column: Instagram -->
+                    <div class="col-md-5 d-flex justify-content-center">
+                        <div class="social-plugin-section w-100" style="margin: 0;">
+                            <div class="plugin-text">
+                                <h4><i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Latest from our Instagram</h4>
+                                <p>See what the Green Tech Club is up to this week!</p>
+                            </div>
+                            
+                            <div class="instagram-wrapper" style="position: relative; min-height: 450px; display: flex; justify-content: center; align-items: center;">
+                                <div class="loading-spinner" style="position: absolute; z-index: 0; color: #7e7b7b; text-align: center;">
+                                    <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+                                    <p class="mt-2" style="font-size: 0.85rem;">Loading post...</p>
+                                </div>
+
+                                <blockquote class="instagram-media" 
+                                    data-instgrm-permalink="https://www.instagram.com/p/DcLYcNTFPUW/" 
+                                    data-instgrm-version="14" 
+                                    style="margin: 0 auto; max-width: 350px; width: 100%; border-radius: 10px; border: 1px solid #e5e5e5; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); position: relative; z-index: 1;">
+                                </blockquote>
+                                <script async src="https://www.instagram.com/embed.js"></script>
+                            </div>
+                        </div>
                     </div>
 
-                    <blockquote class="instagram-media" 
-                        data-instgrm-permalink="https://www.instagram.com/p/DcLYcNTFPUW/" 
-                        data-instgrm-version="14" 
-                        style="margin: 0 auto; max-width: 100%; width: 100%; border-radius: 10px; border: 1px solid #e5e5e5; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); position: relative; z-index: 1;">
-                    </blockquote>
-                    <script async src="https://www.instagram.com/embed.js"></script>
-                </div>
-            </div>
+                    <!-- Right Column: Sign Up Box -->
+                    <div class="col-md-5 d-flex justify-content-center">
+                        <div id="signup-widget" class="signup-window w-100" style="margin: 0;">
+                            <div class="signup-inner">
+                                <div class="signup-text">
+                                    <h4>Stay in the loop</h4>
+                                    <p>Get updates on events, workshops, and new projects — no spam, just green tech.</p>
+                                </div>
 
-            <!-- 2. The Sign Up Box (Centered, 400px) -->
-            <div id="signup-widget" class="signup-window position-relative z-1">
-                <div class="signup-inner">
-                    <div class="signup-text">
-                        <h4>Stay in the loop</h4>
-                        <p>Get updates on events, workshops, and new projects — no spam, just green tech.</p>
+                                <form id="signup-form" class="signup-form">
+                                    <input type="text" id="signup-name" placeholder="Your name" required aria-label="Name">
+                                    <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address">
+
+                                    <fieldset class="signup-interests">
+                                        <legend>What are you interested in?</legend>
+                                        <label><input type="checkbox" name="interest" value="Recycling"> Recycling</label>
+                                        <label><input type="checkbox" name="interest" value="Smart Cities"> Smart Cities</label>
+                                        <label><input type="checkbox" name="interest" value="Sustainable Technologies"> Sustainable Technologies</label>
+                                        <label><input type="checkbox" name="interest" value="Renewable Energy"> Renewable Energy</label>
+                                    </fieldset>
+
+                                    <button type="submit">Sign Up</button>
+                                </form>
+
+                                <p id="signup-confirmed" class="signup-confirmed" hidden>
+                                    ✓ You're signed up — thanks for joining!
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
-                    <form id="signup-form" class="signup-form">
-                        <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address">
-                        <button type="submit" class="w-100 mt-2">Sign Up</button>
-                    </form>
-
-                    <p id="signup-confirmed" class="signup-confirmed" hidden>
-                        ✓ You're signed up — thanks for joining!
-                    </p>
                 </div>
             </div>
-
         </section>
 
     </main>
@@ -200,6 +219,9 @@
             loadNewsTicker();
         });
 
+        const NEWS_CACHE_KEY = "newsTickerCache";
+        const NEWS_CACHE_MAX_AGE_MS = 20 * 60 * 1000; // Records for 20 min
+
         async function loadNewsTicker() {
             const contentEl = document.getElementById("news-ticker-content");
 
@@ -229,6 +251,34 @@
             } catch (error) {
                 console.error("News ticker falling back to static headlines:", error);
                 renderTicker(fallbackHeadlines.map(title => ({ title, link: null })));
+            }
+        }
+
+        //Session Storage implementation
+         function getCachedHeadlines() {
+            try {
+                const raw = sessionStorage.getItem(NEWS_CACHE_KEY);
+                if (!raw) return null;
+
+                const { items, fetchedAt } = JSON.parse(raw);
+                const age = Date.now() - fetchedAt;
+                if (!items || !items.length || age > NEWS_CACHE_MAX_AGE_MS) return null;
+
+                return items;
+            } catch (error) {
+                console.warn("News ticker cache unreadable:", error);
+                return null;
+            }
+        }
+
+        function cacheHeadlines(items) {
+            try {
+                sessionStorage.setItem(NEWS_CACHE_KEY, JSON.stringify({
+                    items,
+                    fetchedAt: Date.now()
+                }));
+            } catch (error) {
+                console.warn("Could not cache news ticker headlines:", error);
             }
         }
 

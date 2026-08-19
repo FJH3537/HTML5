@@ -27,8 +27,17 @@
     font-weight: 900;
     line-height: 0.98;
 }
+
 .page-content {
-    align-content: center;
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.page-content-sub {
+    color: #666666;
+    margin-bottom: 30px;
 }
 
 .page-content h1 {
@@ -177,17 +186,7 @@
     }
 }
 
-.page-content {
-    max-width: 1100px;
-    margin: 60px auto;
-    padding: 0 20px;
-    text-align: center;
-}
 
-.page-content-sub {
-    color: #666666;
-    margin-bottom: 30px;
-}
 
 .page-banner .col-md-7 {
     border-left: 2px solid #7e7b7b;
@@ -264,6 +263,11 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
 }
 
+.social-plugin-section, .signup-window {
+    position: relative;
+    z-index: 1; 
+}
+
 .social-plugin-section h4 {
     color: #14213d;
     font-weight: 700;
@@ -280,7 +284,7 @@
     /* Subtle dot pattern adapted from your Renewables page! */
     background-image: radial-gradient(rgba(45, 106, 79, 0.12) 1.5px, transparent 1.5px);
     background-size: 25px 25px;
-    
+    position: relative;
     padding: 30px 20px 80px 20px; 
     border-top: 1px solid #e5e5e5;
     overflow: hidden;
@@ -293,9 +297,9 @@
     position: absolute;
     top: 15%;
     left: 8%;
-    font-size: 20rem;
+    font-size: 15rem;
     color: rgba(0, 195, 117, 0.04); /* Very faint green */
-    transform: rotate(-20deg);
+    transform: rotate(-15deg);
     z-index: 0;
     pointer-events: none; /* Stops it from blocking mouse clicks */
 }
@@ -307,7 +311,7 @@
     position: absolute;
     bottom: 10%;
     right: 8%;
-    font-size: 20rem;
+    font-size: 15rem;
     color: rgba(225, 48, 108, 0.03); /* Very faint pink */
     transform: rotate(15deg);
     z-index: 0;
@@ -331,11 +335,7 @@
         padding-top: 20px !important;
         padding-bottom: 20px !important;
     }
-
-    /* Shrink the headings and text inside the banner */
-    .page-banner h2 {
-        font-size: 1.6rem; 
-    }
+    
     .page-banner h4 {
         font-size: 1.2rem;
     }
@@ -445,9 +445,5 @@
     .news-ticker-label {
         padding: 5px 10px;
         font-size: 0.7rem;
-    }
-
-    .news-ticker-label .label-text {/*Hide the logo if too small*/
-        display: none;
     }
 }
