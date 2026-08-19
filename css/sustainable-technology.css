@@ -21,7 +21,7 @@ body {
     color: #ffffff;
     background:
         linear-gradient(90deg, rgba(0, 43, 32, 0.94) 0%, rgba(0, 62, 37, 0.78) 52%, rgba(0, 43, 32, 0.35) 100%),
-        url('images/sustainable-future.webp') center 47% / cover no-repeat;
+        url('../images/sustainable-future.webp') center 47% / cover no-repeat;
 }
 
 .innovation-hero::after {
