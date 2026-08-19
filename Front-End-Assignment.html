@@ -214,6 +214,7 @@
             });
         });
 
+    
         //moving ticker bar
         document.addEventListener("DOMContentLoaded", () => {
             loadNewsTicker();
@@ -254,6 +255,33 @@
             }
         }
 
+        function renderTicker(items) {
+            const contentEl = document.getElementById("news-ticker-content");
+            contentEl.innerHTML = ""; // clear "Loading..." message
+
+            // Duplicate the list once so the scroll loop feels continuous
+            // (no visible gap between the last headline and the first repeat).
+            const doubledItems = items.concat(items);
+
+            doubledItems.forEach(item => {
+                const span = document.createElement("span");
+                span.className = "news-item";
+
+                if (item.link) {
+                    const a = document.createElement("a");
+                    a.href = item.link;
+                    a.target = "_blank";
+                    a.rel = "noopener noreferrer";
+                    a.textContent = item.title;
+                    span.appendChild(a);
+                } else {
+                    span.textContent = item.title;
+                }
+
+                contentEl.appendChild(span);
+            });
+        }
+
         //Session Storage implementation
          function getCachedHeadlines() {
             try {
@@ -280,33 +308,6 @@
             } catch (error) {
                 console.warn("Could not cache news ticker headlines:", error);
             }
-        }
-
-        function renderTicker(items) {
-            const contentEl = document.getElementById("news-ticker-content");
-            contentEl.innerHTML = ""; // clear "Loading..." message
-
-            // Duplicate the list once so the scroll loop feels continuous
-            // (no visible gap between the last headline and the first repeat).
-            const doubledItems = items.concat(items);
-
-            doubledItems.forEach(item => {
-                const span = document.createElement("span");
-                span.className = "news-item";
-
-                if (item.link) {
-                    const a = document.createElement("a");
-                    a.href = item.link;
-                    a.target = "_blank";
-                    a.rel = "noopener noreferrer";
-                    a.textContent = item.title;
-                    span.appendChild(a);
-                } else {
-                    span.textContent = item.title;
-                }
-
-                contentEl.appendChild(span);
-            });
         }
 
         $(document).ready(function () {

@@ -13,292 +13,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="global.css">
     <link rel="icon" type="image/png" href="images/leaf.png">
-
-    <style>
-        :root {
-            --site-green: #004a29;
-            --site-bright-green: #00c375;
-            --site-navy: #14213d;
-            --site-gold: #f2b705;
-            --soft-green: #edf8f2;
-            --body-text: #3f4a46;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: var(--body-text);
-        }
-
-        .about-hero {
-            min-height: 510px;
-            display: flex;
-            align-items: center;
-            color: #ffffff;
-            background:
-                linear-gradient(90deg, rgba(10, 32, 25, 0.9) 0%, rgba(10, 32, 25, 0.7) 48%, rgba(10, 32, 25, 0.25) 100%),
-                url("images/Nature.jpg") center/cover no-repeat;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            color: var(--site-bright-green);
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            font-size: 0.82rem;
-        }
-
-        .about-hero h1 {
-            max-width: 760px;
-            margin: 14px 0 20px;
-            font-size: clamp(2.6rem, 6vw, 5rem);
-            line-height: 1.02;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-        }
-
-        .about-hero .lead {
-            max-width: 650px;
-            margin-bottom: 28px;
-            color: rgba(255, 255, 255, 0.88);
-            font-size: 1.15rem;
-            line-height: 1.75;
-        }
-
-        .hero-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 13px 22px;
-            border-radius: 999px;
-            background-color: var(--site-gold);
-            color: var(--site-navy);
-            font-weight: 800;
-            text-decoration: none;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .hero-link:hover {
-            color: var(--site-navy);
-            background-color: #ffd33d;
-            transform: translateY(-2px);
-        }
-
-        .section-space {
-            padding: 88px 0;
-        }
-
-        .section-title {
-            color: var(--site-navy);
-            font-weight: 800;
-            letter-spacing: -0.025em;
-        }
-
-        .mission-photo {
-            position: relative;
-            min-height: 460px;
-        }
-
-        .mission-photo img {
-            width: 90%;
-            height: 430px;
-            object-fit: cover;
-            border-radius: 18px;
-            box-shadow: 0 20px 50px rgba(20, 33, 61, 0.16);
-        }
-
-        .mission-note {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 250px;
-            padding: 24px;
-            border-radius: 14px;
-            background-color: var(--site-green);
-            color: #ffffff;
-            box-shadow: 0 16px 35px rgba(0, 74, 41, 0.28);
-        }
-
-        .mission-note i {
-            color: var(--site-bright-green);
-            font-size: 1.5rem;
-        }
-
-        .mission-note strong {
-            display: block;
-            margin: 8px 0 5px;
-            font-size: 1.15rem;
-        }
-
-        .mission-copy p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .mission-points {
-            margin-top: 28px;
-            display: grid;
-            gap: 14px;
-        }
-
-        .mission-point {
-            display: flex;
-            align-items: flex-start;
-            gap: 13px;
-            font-weight: 600;
-            color: var(--site-navy);
-        }
-
-        .mission-point i {
-            margin-top: 3px;
-            color: var(--site-bright-green);
-        }
-
-        .values-section {
-            background-color: var(--soft-green);
-        }
-
-        .value-card {
-            height: 100%;
-            padding: 30px;
-            border: 1px solid rgba(0, 74, 41, 0.1);
-            border-radius: 16px;
-            background-color: #ffffff;
-            box-shadow: 0 8px 24px rgba(20, 33, 61, 0.06);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px rgba(20, 33, 61, 0.11);
-        }
-
-        .value-icon {
-            width: 54px;
-            height: 54px;
-            display: grid;
-            place-items: center;
-            margin-bottom: 20px;
-            border-radius: 14px;
-            background-color: var(--site-green);
-            color: #ffffff;
-            font-size: 1.3rem;
-        }
-
-        .value-card h3 {
-            color: var(--site-navy);
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
-
-        .value-card p {
-            margin-bottom: 0;
-            line-height: 1.7;
-        }
-
-        .impact-strip {
-            overflow: hidden;
-            border-radius: 20px;
-            background-color: var(--site-navy);
-            color: #ffffff;
-        }
-
-        .impact-image {
-            min-height: 360px;
-            background: url("images/Sustainable_Future.jpg") center/cover no-repeat;
-        }
-
-        .impact-copy {
-            padding: 52px;
-        }
-
-        .impact-copy p {
-            color: #d9e1eb;
-            line-height: 1.75;
-        }
-
-        .impact-copy a {
-            color: var(--site-bright-green);
-            font-weight: 800;
-            text-decoration: none;
-        }
-
-        .impact-copy a:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 767.98px) {
-            .about-hero {
-                min-height: 470px;
-                background-position: 62% center;
-            }
-
-            .section-space {
-                padding: 64px 0;
-            }
-
-            .mission-photo img {
-                width: 100%;
-                height: 360px;
-            }
-
-            .mission-note {
-                right: 14px;
-                width: 220px;
-            }
-
-            .impact-copy {
-                padding: 36px 28px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="about.css">
 </head>
 
 <body>
     <div id="nav-placeholder"></div>
 
     <main>
-        <header class="about-hero">
+        <header class="about-banner">
             <div class="container">
-                <span class="eyebrow"><i class="fa-solid fa-seedling"></i> About Green Tech</span>
-                <h1>Turning environmental awareness into everyday action.</h1>
-                <p class="lead">We make green technology easier to understand, explore, and apply—so students and
-                    communities can help build a cleaner, smarter, and more resilient future.</p>
-                <a class="hero-link" href="Green-Tech.html">Explore green technology <i
+                <span class="section-kicker"><i class="fa-solid fa-seedling"></i> About Green Tech</span>
+                <h1>Technology for a Greener Tomorrow</h1>
+                <p class="lead">Discover innovative technologies shaping cleaner communities, smarter cities
+                    and a more sustainable future.</p>
+                <a class="banner-link" href="Green-Tech.html">Explore green technology <i
                         class="fa-solid fa-arrow-right"></i></a>
             </div>
         </header>
 
-        <section class="section-space">
+        <section class="content-block">
             <div class="container">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6">
-                        <div class="mission-photo">
+                        <div class="mission-visual">
                             <img src="images/Agriculture.jpg" alt="Sustainable agriculture and green innovation">
-                            <div class="mission-note">
+                            <div class="mission-message">
                                 <i class="fa-solid fa-leaf"></i>
                                 <strong>Local learning, global impact</strong>
                                 <span>Small informed choices can create meaningful environmental change.</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 mission-copy">
-                        <span class="eyebrow">Our Mission</span>
-                        <h2 class="section-title display-5 mt-2 mb-4">Knowledge that inspires practical change</h2>
+                    <div class="col-lg-6 mission-details">
+                        <span class="section-kicker">Our Mission</span>
+                        <h2 class="content-title display-5 mt-2 mb-4">Knowledge that inspires practical change</h2>
                         <p>Green Tech is a student-led educational initiative based in Malaysia. Our mission is to
                             explain how technology can reduce environmental harm while improving the way people live,
-                            work, travel, and use resources.</p>
-                        <p>Through accessible articles, visual data, and community activities, we connect major
+                            work, travel and use resources.</p>
+                        <p>Through accessible articles, visual data and community activities, we connect major
                             environmental challenges with realistic solutions—from renewable energy and recycling to
                             smart cities and sustainable design.</p>
-                        <div class="mission-points">
-                            <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span>Make reliable
+                        <div class="mission-checklist">
+                            <div class="mission-check"><i class="fa-solid fa-circle-check"></i><span>Make reliable
                                     green-technology knowledge accessible.</span></div>
-                            <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span>Encourage
-                                    responsible choices at home, on campus, and in the community.</span></div>
-                            <div class="mission-point"><i class="fa-solid fa-circle-check"></i><span>Highlight
+                            <div class="mission-check"><i class="fa-solid fa-circle-check"></i><span>Encourage
+                                    responsible choices at home, on campus and in the community.</span></div>
+                            <div class="mission-check"><i class="fa-solid fa-circle-check"></i><span>Highlight
                                     innovations that support long-term sustainability.</span></div>
                         </div>
                     </div>
@@ -306,57 +66,175 @@
             </div>
         </section>
 
-        <section class="values-section section-space">
+        <section class="content-block purpose-area" aria-labelledby="purpose-title">
+            <div class="container">
+                <div class="text-center mx-auto mb-5" style="max-width: 760px;">
+                    <span class="section-kicker">Our Direction</span>
+                    <h2 class="content-title display-5 mt-2" id="purpose-title">A clear purpose, turned into practical
+                        action</h2>
+                    <p class="mt-3">Our mission explains what we do today, while our vision describes the future we
+                        are working towards.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <article class="purpose-panel">
+                            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+                            <h3>Our Mission</h3>
+                            <p>To make green technology understandable and actionable through accessible learning
+                                resources, environmental data and practical opportunities for students and communities.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="col-lg-6">
+                        <article class="purpose-panel vision-panel">
+                            <i class="fa-solid fa-binoculars" aria-hidden="true"></i>
+                            <h3>Our Vision</h3>
+                            <p>A future where sustainable choices are informed, accessible and part of everyday life
+                                at home, on campus and throughout the community.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="change-plan">
+                    <div class="text-center mx-auto mb-4" style="max-width: 680px;">
+                        <span class="section-kicker">How We Create Change</span>
+                        <h2 class="content-title h1 mt-2">Learn, explore and act</h2>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <article class="change-step">
+                                <span class="step-number">01</span>
+                                <h3>Learn</h3>
+                                <p>Explore how green technology is applied in energy, water, transport and everyday life.
+                                </p>
+                                <a href="Green-Tech.html">Start learning <i
+                                        class="fa-solid fa-arrow-right ms-1"></i></a>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="change-step">
+                                <span class="step-number">02</span>
+                                <h3>Explore</h3>
+                                <p>Use live city data and global energy visualisations to examine real environmental
+                                    trends.</p>
+                                <a href="Smart-cities.html">Explore live data <i
+                                        class="fa-solid fa-arrow-right ms-1"></i></a>
+                            </article>
+                        </div>
+                        <div class="col-md-4">
+                            <article class="change-step">
+                                <span class="step-number">03</span>
+
+                                <h3>Act</h3>
+
+                                <p>
+                                    Turn awareness into action through e-waste recycling
+                                    or volunteer opportunities.
+                                </p>
+
+                                <a href="#take-action">
+                                    Support the mission
+                                    <i class="fa-solid fa-arrow-right ms-1"></i>
+                                </a>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="goals-area content-block" aria-labelledby="goals-title">
+            <div class="container">
+                <div class="text-center mx-auto mb-5" style="max-width: 820px;">
+                    <span class="section-kicker"><i class="fa-solid fa-earth-asia"></i> Global Alignment</span>
+                    <h2 class="content-title display-5 mt-2" id="goals-title">Our mission supports the UN Sustainable
+                        Development Goals</h2>
+                    <p class="mt-3">Our work aligns with five Sustainable Development Goals that reflect our commitment
+                        to clean energy,
+                        responsible innovation, sustainable communities, responsible consumption
+                        and climate action. Select a goal to learn more.</p>
+                    <div class="goal-source" id="goalSource" role="status" aria-live="polite">
+                        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+                        <span>Loading official UN goal information...</span>
+                    </div>
+                </div>
+
+                <div class="row g-4 justify-content-center" id="goalList" aria-live="polite"></div>
+
+                <div class="goal-description" id="goalDescription" tabindex="-1" hidden>
+                    <span class="section-kicker" id="goalDescriptionLabel">Selected Goal</span>
+                    <h3 class="h3 mt-2" id="goalDescriptionTitle"></h3>
+                    <p id="goalDescriptionText"></p>
+                </div>
+
+                <noscript>
+                    <div class="alert alert-warning mt-4">JavaScript is required to retrieve the United Nations SDG
+                        information.</div>
+                </noscript>
+            </div>
+        </section>
+
+        <section class="values-area content-block">
             <div class="container">
                 <div class="text-center mx-auto mb-5" style="max-width: 720px;">
-                    <span class="eyebrow">What Guides Us</span>
-                    <h2 class="section-title display-5 mt-2">Our core values</h2>
-                    <p class="mt-3">Every part of the website is designed around learning, responsibility, and
-                        achievable progress.</p>
+                    <span class="section-kicker">What Guides Us</span>
+                    <h2 class="content-title display-5 mt-2">Our core values</h2>
+                    <p class="mt-3">These values guide how we share knowledge,
+                        support communities and encourage practical environmental progress.</p>
                 </div>
 
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <article class="value-card">
-                            <div class="value-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <article class="value-panel">
+                            <div class="value-symbol"><i class="fa-solid fa-book-open"></i></div>
                             <h3>Accessible Education</h3>
-                            <p>We turn technical sustainability topics into clear explanations that people can use in
-                                real life.</p>
+                            <p>We make sustainability topics clear, practical and easy to apply in everyday life.</p>
                         </article>
                     </div>
                     <div class="col-md-4">
-                        <article class="value-card">
-                            <div class="value-icon"><i class="fa-solid fa-people-group"></i></div>
+                        <article class="value-panel">
+                            <div class="value-symbol"><i class="fa-solid fa-people-group"></i></div>
                             <h3>Community Action</h3>
-                            <p>We believe lasting environmental progress grows when people learn, volunteer, and act
-                                together.</p>
+                            <p>We create opportunities for people to learn, participate and take action together.</p>
                         </article>
                     </div>
                     <div class="col-md-4">
-                        <article class="value-card">
-                            <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <article class="value-panel">
+                            <div class="value-symbol"><i class="fa-solid fa-lightbulb"></i></div>
                             <h3>Responsible Innovation</h3>
-                            <p>We support technologies that balance human needs with efficient resource use and lower
-                                environmental impact.</p>
+                            <p>We support technologies that meet human needs while using resources efficiently and
+                                reducing environmental impact.</p>
                         </article>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-space">
+        <section class="content-block" id="take-action">
             <div class="container">
-                <div class="impact-strip">
+                <div class="join-banner">
                     <div class="row g-0 align-items-stretch">
-                        <div class="col-lg-6 impact-image" role="img" aria-label="A sustainable green future"></div>
-                        <div class="col-lg-6 impact-copy d-flex flex-column justify-content-center">
-                            <span class="eyebrow">Be Part of the Change</span>
-                            <h2 class="display-6 fw-bold my-3">A greener future needs informed people.</h2>
-                            <p>Start by learning what green technology is, discover practical recycling habits, or
-                                contribute your time through our volunteer activities.</p>
+                        <div class="col-lg-6 join-image" role="img" aria-label="A sustainable green future">
+                        </div>
+
+                        <div class="col-lg-6 join-content d-flex flex-column justify-content-center">
+                            <span class="section-kicker">Be Part of the Change</span>
+
+                            <h2 class="display-6 fw-bold my-3">
+                                A greener future needs informed people.
+                            </h2>
+
+                            <p>
+                                Choose the path that suits you. Learn practical
+                                recycling habits or contribute your time through
+                                volunteer activities.
+                            </p>
                             <div class="d-flex flex-wrap gap-4 mt-2">
-                                <a href="recycling.html">Learn to recycle <i class="fa-solid fa-arrow-right ms-1"></i></a>
-                                <a href="volunteer.html">Volunteer with us <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                                <a href="recycling.html">Learn to recycle <i
+                                        class="fa-solid fa-arrow-right ms-1"></i></a>
+                                <a href="volunteer.html">Volunteer with us <i
+                                        class="fa-solid fa-arrow-right ms-1"></i></a>
                             </div>
                         </div>
                     </div>
@@ -370,6 +248,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="global.js"></script>
+    <script src="about.js"></script>
 </body>
 
 </html>
